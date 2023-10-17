@@ -2,3 +2,15 @@
 A virtual solar wind upstream monitor (vSWUM) for planetary heliophysics with machine learning and spacecraft data.
 
 This project is currently (10/17/2023) using data from the MAVEN mission and Gaussian process regression to estimate the upstream conditions at Mars.
+
+
+Current issues (room for improvement): 
+
+- Jasper's files are TOO LARGE to have hosted on Github in any way shape or form, we need data hosting of some sort somewhere along the path
+- Same with orbital cadence of MAVEN, too large
+- There are two paths:
+    Path 1: People have to grab their own files(?) and then run the code (this is probably the best option because this will be the smallest and fastest)
+    - This path would be heavily benefited from Jasper putting orbit numbers into his file. 
+    Path 2: We host the pickle files (somewhere?) and this repo just has the option to run the script itself that opens pickle files
+
+Current inspo: https://sdoml.github.io/
