@@ -4,7 +4,7 @@ A virtual solar wind upstream monitor (vSWUM) for planetary heliophysics with ma
 This project is currently (10/17/2023) using data from the MAVEN mission and Gaussian process regression to estimate the upstream conditions at Mars.
 
 
-Current issues (room for improvement): 
+Current issues that are precluding Git progress: 
 
 - Jasper's files (upstream original dataset) are TOO LARGE to have hosted on Github. 
 - Same with orbital cadence of MAVEN, too large
