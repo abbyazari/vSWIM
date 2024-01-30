@@ -1,4 +1,4 @@
-# vSWIM<sup>\emph{beta}</sup> - A Virtual Solar Wind Monitor for Mars 
+# vSWIM<sup>beta</sup> - A Virtual Solar Wind Monitor for Mars 
 
 IMPORTANT: This repository is currently in beta and has been released for the peer review process (as of February 1, 2024). 
 
