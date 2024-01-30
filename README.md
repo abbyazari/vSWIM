@@ -1,4 +1,4 @@
-# vSWIM<sup>_beta_</sup> - Virtual Solar Wind Monitor for Mars
+# vSWIM<sup>\emph{beta}</sup> - Virtual Solar Wind Monitor for Mars
 
 This reposiory consists of the course code to generate predictions of the upstream solar wind at Mars using Gaussian process regressions on [MAVEN](https://mars.nasa.gov/maven/) spacecraft data.
 
