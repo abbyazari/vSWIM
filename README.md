@@ -2,14 +2,27 @@
 
 IMPORTANT: This repository is currently in beta and has been released for the peer review process (as of February 1, 2024). 
 
-### Overview 
+This reposiory consists of the source code to generate predictions of the upstream solar wind at Mars using Gaussian process regressions on [MAVEN](https://mars.nasa.gov/maven/) spacecraft data.
 
-This reposiory consists of the course code to generate predictions of the upstream solar wind at Mars using Gaussian process regressions on [MAVEN](https://mars.nasa.gov/maven/) spacecraft data.
+### Contents
 
+1. Hourly cadence solar wind predictions at [INSERT]. Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
+   
+2. Source code needed to generate predictions at [INSERT]. Use this if you need sub hour predictions of the solar wind at Mars.
 
 ### Usage Guidelines
 
-...some useful tips and tricks...
+The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)).
+
+Generally framed
+
+Model Card. https://modelcards.withgoogle.com/model-reports
+
+What is it?
+
+
+
+Suggested Usage and Limtations
 
 
 ### Citing vSWIM
