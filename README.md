@@ -1,5 +1,5 @@
-# vSWIM
-A virtual solar wind upstream monitor (vSWUM) for planetary heliophysics with machine learning and spacecraft data.
+# vSWIM - Virtual Solar Wind Monitor for Mars
+A virtual solar wind upstream monitor (vSWIM) for planetary heliophysics with machine learning and spacecraft data.
 
 This project is currently (October 2023) using data from the MAVEN mission and Gaussian process regression to estimate the upstream conditions at Mars.
 
