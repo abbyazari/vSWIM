@@ -2,9 +2,15 @@
 
 IMPORTANT: This repository is currently in beta and has been released for the peer review process (as of February 1, 2024). 
 
-### Overview: 
+### Overview 
 
 This reposiory consists of the course code to generate predictions of the upstream solar wind at Mars using Gaussian process regressions on [MAVEN](https://mars.nasa.gov/maven/) spacecraft data.
+
+
+### Usage Guidelines
+
+...some useful tips and tricks...
+
 
 ### Citing vSWIM
 
