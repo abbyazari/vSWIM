@@ -1,5 +1,8 @@
 # vSWIM - Virtual Solar Wind Monitor for Mars
-A virtual solar wind upstream monitor (vSWIM) for planetary heliophysics with machine learning and spacecraft data.
+
+This reposiory consists of the course code to generate predictions of the upstream solar wind at Mars using Gaussian process regressions on [MAVEN](https://mars.nasa.gov/maven/) spacecraft data.
+
+Citation: It accompanies [Azari et al., 2024](https://github.com/abbyazari/vSWIM/blob/main/Citation.bib). 
 
 This project is currently (October 2023) using data from the MAVEN mission and Gaussian process regression to estimate the upstream conditions at Mars.
 
