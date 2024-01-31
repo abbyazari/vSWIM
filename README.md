@@ -14,23 +14,29 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 
 [1. Model Description](#model)
    
-[2. Assessement](#model)
+[2. Assessment](#assessment)
 
-[3. Suggested Use Cases](#model)
+[3. Suggested Use Cases](#usecases)
 
-[4. Limitations](#model)
+[4. Limitations](#limits)
  
  <!-- headings -->
  <a id="model"></a>
  ### 1. Model Description
+
+ a. Overview:
+ b. Data sources: See [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data).
+ c. Formulation:
+ d. Data sources:
+ e. Implementation: 
  
-  <a id="model"></a>
- ### 2. Assessement 
+  <a id="sssessment"></a>
+ ### 2. Assessment 
  
-  <a id="model"></a>
+  <a id="usecases"></a>
  ### 3. Suggested Use Cases
  
-  <a id="model"></a>
+  <a id="limits"></a>
  ### 4. Limitations
  
 The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within [Azari et al., 2024](PENDING).
@@ -39,7 +45,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 Overview: This model is a Gaussian process regression on high-resolution upstream data from MAVEN SWIA and MAG from 2014 up to present.
 
-Original data source: See [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data).
+Original data source: 
 
 Outputs: 
 
