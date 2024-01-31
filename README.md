@@ -10,8 +10,8 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 2. **Code:** [Source code](INSERT) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#model) for vSWIM. Read this if you need to use the model or the dataset.
 
-
-### Citing vSWIM
+<a id="citation"></a>
+## Citing vSWIM
 
 If you use this product please reference the submitted [JGR Machine Learning paper](PENDING). Sample Bibtex is given below:
 
@@ -72,7 +72,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
     - l initialized to 0.1 of the non zero gaps betwen the dataset and ranging from the minimum to the median of the non zero gaps
     - the variance intitially set to 3.
 
-- A fuller discussion of implementation Gaussian processes can be found within [Azari et al., 2024](PENDING).
+- A fuller discussion of implementation Gaussian processes can be found within the [publication](#citation).
 
 
 #### Example Algorithm
@@ -88,9 +88,11 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 ### 2. Assessment 
  
 #### Test Set
+
 - Poor model performance is a function of distance to a true (spacecraft measured) value. The test set then was designed to have the same distribution of data gaps as a final predicted proxy sampled at an hour cadence. All the following performance estimates are based on this test dataset.
    
 #### Performance of Mean Prediction, $\mu$
+
 - The performance of the mean predicted solar wind parameters (all) is the best when close to a real measurement.
 - For an hourly cadence of prediction the estimated $R^{2}$ value is:
  -  $\ge$ 0.95 within 2 days of a true measurement, this represents using roughly 66% of the dataset.
@@ -101,14 +103,26 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 -  It is worth noting that at large times from a true spacecraft measurement, the model can (and does) produce our initial 'guess' at the parameter value. From our initialization this is the mean value of the true dataset. You can identify when this occurs by reviewing the unnormalized prediction of $\mu$. When the unnormalized prediction of $\mu$ is close to 0, the prediction is the same as the initial subset's mean. 
   
 #### Performance of Standard Deviation Prediction, $\sigma$
-- 
+
+- One of the main purposes of this model is for uncertainty quantification. Every prediction $\mu$, has an associated $\sigma$ or predicted standard deviation.
+- In the ideal case $\sigma$ should be representative of the true (or actual) model, and data, uncertainty.
+- We estimated if $\sigma$ is capturing this uncertainty by evaluating the normalized residuals ($y_{model} - y_{data}$ / \sigma_{model}$).  
+- We found that the uncertainties are:
+ - unbiased, and accurate within 2 days of a true measurement, this represents using roughly 66% of the dataset.
+ -  unbiased, and mostly accurate (depends on the feature) within 10 days of a true measurement, this represents using roughly 80% of the dataset.
+ -  unbiased, and underestimated (scale depending on the feature) within 28 days of a true measurement, this represents using roughly 95% of the dataset.
+- Full data can be found in the table within the associated [publication](#citation). 
 
  
   <a id="usecases"></a>
  ### 3. Suggested Use Cases
+
+ - 
  
   <a id="limits"></a>
  ### 4. Limitations
+ 
+ - No extremes. 
 
  It is known that the further from a true data point more errors, of particular note, the UQ becomes poor (see table in blah).
 
