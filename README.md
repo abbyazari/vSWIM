@@ -6,9 +6,9 @@ This reposiory consists of the source code to generate predictions of the upstre
 
 ### Contents
 
-1. Hourly cadence solar wind predictions at [INSERT]. Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
-2. Source code needed to generate predictions at [INSERT]. Use this if you need sub hour predictions of the solar wind at Mars.
-3. A user guide for vSWIM. 
+1. **Low Resolution Data:** Hourly cadence solar wind predictions at [INSERT]. Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
+2. **Code:** Source code needed to generate predictions at [INSERT]. Use this if you need sub hour predictions of the solar wind at Mars.
+3. **Usage Guidelines:** A short user guide for vSWIM.
 
 ### User Guide
 
