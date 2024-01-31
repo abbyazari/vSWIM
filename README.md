@@ -24,7 +24,8 @@ This repository contains predictions of the solar wind upstream of Mars from lat
  <a id="model"></a>
  ### 1. Model Description
 
-   a. Overview: 
+   <details open>
+   <summary>a. Overview: 
    
    This model uses solar wind data measured from the MAVEN spacecraft since late 2014 and Gaussian process regression to generate continuous predictions (mean, $\mu$ and standard deviation, $\sigma$) of mulitple features of the solar wind including: 
    
@@ -33,7 +34,8 @@ This repository contains predictions of the solar wind upstream of Mars from lat
    - Temperature: $T_{p}$ in [eV]
    - Pressure: $n_{p}$ in [per cc]
    
-   All vector quanties are measured in Mars Solar Orbital (MSO) coordinates. 
+   All vector quanties are measured in Mars Solar Orbital (MSO) coordinates. </summary>
+   </details>
    
    b. Data sources: 
    
