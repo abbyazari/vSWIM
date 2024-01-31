@@ -2,7 +2,7 @@
 
 ### *IMPORTANT: This repository is currently in beta. It has been released for the peer review process.* 
 
-This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model.  
+This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model. Largely this model is useful for statistical studies where a continuous estimation with uncertainties is needed at Mars.
 
 ## Contents
 
@@ -95,9 +95,9 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 - The performance of the mean predicted solar wind parameters (all) is the best when close to a real measurement.
 - For an hourly cadence of prediction the estimated $R^{2}$ value is:
- -  $\ge$ 0.95 within 2 days of a true measurement, this represents using roughly 66% of the dataset.
- -  $\ge$ 0.62 within 10 days of a true measurement, this represents using roughly 80% of the dataset.
- -  $\ge$ 0.48 within 28 days of a true measurement, this represents using roughly 95% of the dataset.
+   - $\ge$ 0.95 within 2 days of a true measurement, this represents using roughly 66% of the dataset.
+   - $\ge$ 0.62 within 10 days of a true measurement, this represents using roughly 80% of the dataset.
+   - $\ge$ 0.48 within 28 days of a true measurement, this represents using roughly 95% of the dataset.
   
 -  There are minor differences depending on the paramters in question with $V_{y}$ representing the poorest performing parameter.
 -  It is worth noting that at large times from a true spacecraft measurement, the model can (and does) produce our initial 'guess' at the parameter value. From our initialization this is the mean value of the true dataset. You can identify when this occurs by reviewing the unnormalized prediction of $\mu$. When the unnormalized prediction of $\mu$ is close to 0, the prediction is the same as the initial subset's mean. 
@@ -106,26 +106,24 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 - One of the main purposes of this model is for uncertainty quantification. Every prediction $\mu$, has an associated $\sigma$ or predicted standard deviation.
 - In the ideal case $\sigma$ should be representative of the true (or actual) model, and data, uncertainty.
-- We estimated if $\sigma$ is capturing this uncertainty by evaluating the normalized residuals ($y_{model} - y_{data}$ / \sigma_{model}$).  
+- We estimated if $\sigma$ is capturing this uncertainty by evaluating the normalized residuals ($y_{model} - y_{data} / \sigma_{model}$).  
 - We found that the uncertainties are:
- - unbiased, and accurate within 2 days of a true measurement, this represents using roughly 66% of the dataset.
- -  unbiased, and mostly accurate (depends on the feature) within 10 days of a true measurement, this represents using roughly 80% of the dataset.
- -  unbiased, and underestimated (scale depending on the feature) within 28 days of a true measurement, this represents using roughly 95% of the dataset.
+   - unbiased, and accurate within 2 days of a true measurement, this represents using roughly 66% of the dataset.
+   - unbiased, and mostly accurate (depends on the feature) within 10 days of a true measurement, this represents using roughly 80% of the dataset.
+   - unbiased, and underestimated (scale depending on the feature) within 28 days of a true measurement, this represents using roughly 95% of the dataset.
 - Full data can be found in the table within the associated [publication](#citation). 
 
  
   <a id="usecases"></a>
  ### 3. Suggested Use Cases
 
- - 
- 
+ - The most appropriate use case of this proxy is for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
+ - Due to the nature of this prediction, $\sigma$ predictions should always be used with $\mu$ predictions. 
+   
   <a id="limits"></a>
  ### 4. Limitations
  
- - No extremes. 
-
- It is known that the further from a true data point more errors, of particular note, the UQ becomes poor (see table in blah).
-
- WILL PREDICT THE MEAN (note the assemsnet)
- 
+ - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself.
+ - Vector quantiies are not guranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
+ - When this proxy is at 'its worst', ie it is a long time since a recent measurement, the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers.
 
