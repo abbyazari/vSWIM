@@ -13,18 +13,25 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 ### User Guide
 
 [1. Model Description](#model)
-
-   [a. Something]
    
-[2. Model Description](#model)
+[2. Assessement](#model)
 
-[3. Model Description](#model)
+[3. Suggested Use Cases](#model)
 
-[4. Model Description](#model)
+[4. Limitations](#model)
  
  <!-- headings -->
  <a id="model"></a>
  ### 1. Model Description
+ 
+  <a id="model"></a>
+ ### 2. Assessement 
+ 
+  <a id="model"></a>
+ ### 3. Suggested Use Cases
+ 
+  <a id="model"></a>
+ ### 4. Limitations
  
 The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within [Azari et al., 2024](PENDING).
 
