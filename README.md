@@ -10,9 +10,29 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 2. **Code:** [Source code](INSERT) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#model) for vSWIM. Read this if you need to use the model or the dataset.
 
+
+### Citing vSWIM
+
+If you use this product please reference the submitted [JGR Machine Learning paper](PENDING). Sample Bibtex is given below:
+
+```
+@article{Azari2024,
+author = {Azari A. R. and Abrahams, E. and Sapienza, and F. and Halekas, J. and Biersteker, J. and 
+Mitchell, D. L. and P ́erez, F. and Marquette, M. and Rutala, M. J. and Bowers, C. F. and 
+Jackman, C. M. and Curry, S. M.},
+doi = {TBD},
+journal = {Journal of Geophysical Research: Machine Learning and Computation},
+title = {A Virtual Solar Wind Monitor for {M}ars with Uncertainty Quantification using {G}aussian Processes},
+year = {2024, submitted}
+}
+```
+
+
  <!-- headings -->
  <a id="guidelines"></a>
 ## Usage Guidelines
+
+The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within [Azari et al., 2024](PENDING).
 
 [1. Model Description](#model)
    
@@ -52,34 +72,36 @@ This repository contains predictions of the solar wind upstream of Mars from lat
     - l initialized to 0.1 of the non zero gaps betwen the dataset and ranging from the minimum to the median of the non zero gaps
     - the variance intitially set to 3.
 
-A fuller discussion of implementation Gaussian processes can be found within [Azari et al., 2024](PENDING).
+- A fuller discussion of implementation Gaussian processes can be found within [Azari et al., 2024](PENDING).
 
 
 #### Example Algorithm
-   - Split MAVEN dataset into 1000 datapoint subsets
-   - For each subset
-        - For each feature in the dataset $y_{i}$) where i ranges from {0, ..., 9}, corresponding to each unique solar wind feature
+   - Split MAVEN dataset into 1000 datapoint subsets.
+   - For each subset; and
+        - For each feature in the dataset $y_{i}$) where i ranges from {0, ..., 9}, corresponding to each solar wind feature
            - Normalize inputs
            - Initialize kernel hyperparameters
            - Run Gaussian process regression
-           - Return predictions and unnormalize</details>
-   </br>
+           - Return predictions and unnormalize
  
- <a id="asssessment"></a>
- ### 2. Assessment 
+<a id="asssessment"></a>
+### 2. Assessment 
  
-   #### Test Set
-   </br>
-   A test
-   </br>
+#### Test Set
+- Poor model performance is a function of distance to a true (spacecraft measured) value. The test set then was designed to have the same distribution of data gaps as a final predicted proxy sampled at an hour cadence. All the following performance estimates are based on this test dataset.
    
-   #### Performance of Mean Prediction, $\mu$
-   </br>
-   </br>
-
-   #### Performance of Standard Deviation Prediction, $\sigma$
-   </br>
-   </br>
+#### Performance of Mean Prediction, $\mu$
+- The performance of the mean predicted solar wind parameters (all) is the best when close to a real measurement.
+- For an hourly cadence of prediction the estimated $R^{2}$ value is:
+ -  $\ge$ 0.95 within 2 days of a true measurement, this represents using roughly 66% of the dataset.
+ -  $\ge$ 0.62 within 10 days of a true measurement, this represents using roughly 80% of the dataset.
+ -  $\ge$ 0.48 within 28 days of a true measurement, this represents using roughly 95% of the dataset.
+  
+-  There are minor differences depending on the paramters in question with $V_{y}$ representing the poorest performing parameter.
+-  It is worth noting that at large times from a true spacecraft measurement, the model can (and does) produce our initial 'guess' at the parameter value. From our initialization this is the mean value of the true dataset. You can identify when this occurs by reviewing the unnormalized prediction of $\mu$. When the unnormalized prediction of $\mu$ is close to 0, the prediction is the same as the initial subset's mean. 
+  
+#### Performance of Standard Deviation Prediction, $\sigma$
+- 
 
  
   <a id="usecases"></a>
@@ -88,38 +110,8 @@ A fuller discussion of implementation Gaussian processes can be found within [Az
   <a id="limits"></a>
  ### 4. Limitations
 
- WILL PREDICT THE MEAN
+ It is known that the further from a true data point more errors, of particular note, the UQ becomes poor (see table in blah).
+
+ WILL PREDICT THE MEAN (note the assemsnet)
  
-The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within [Azari et al., 2024](PENDING).
 
-#### Model Description
-
-Overview: This model is a Gaussian process regression on high-resolution upstream data from MAVEN SWIA and MAG from 2014 up to present.
-
-Original data source: 
-
-Outputs: 
-
-#### Performance
-
-(test set) refer people to paper.  
-
-#### Suggested Usage
-
-#### Limtations
-
-### Citing vSWIM
-
-If you use this product please reference the submitted [JGR Machine Learning paper](PENDING). Sample Bibtex is given below:
-
-```
-@article{Azari2024,
-author = {Azari A. R. and Abrahams, E. and Sapienza, and F. and Halekas, J. and Biersteker, J. and 
-Mitchell, D. L. and P ́erez, F. and Marquette, M. and Rutala, M. J. and Bowers, C. F. and 
-Jackman, C. M. and Curry, S. M.},
-doi = {TBD},
-journal = {Journal of Geophysical Research: Machine Learning and Computation},
-title = {A Virtual Solar Wind Monitor for {M}ars with Uncertainty Quantification using {G}aussian Processes},
-year = {2024, submitted}
-}
-```
