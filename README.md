@@ -32,7 +32,7 @@ year = {2024, submitted}
  <a id="guidelines"></a>
 ## Usage Guidelines
 
-The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within [Azari et al., 2024](PENDING).
+The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within the associated [publication](#citation)).
 
 [1. Model Description](#model)
    
