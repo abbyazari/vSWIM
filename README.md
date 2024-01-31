@@ -59,8 +59,10 @@ This repository contains predictions of the solar wind upstream of Mars from lat
            - Run Gaussian process regression
            - Return predictions and unnormalize</details>
    </br>
-  <a id="asssessment"></a>
- ### 2. Assessment  
+ 
+ <a id="asssessment"></a>
+ ### 2. Assessment 
+ 
    <details>
    <summary>Test Set</summary>
    </br>
