@@ -1,12 +1,12 @@
 # vSWIM<sup>*beta*</sup> - A Virtual Solar Wind Monitor for Mars 
 
-### IMPORTANT: This repository is currently in beta. It has been released for the peer review process. 
+### *IMPORTANT: This repository is currently in beta. It has been released for the peer review process.* 
 
 This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model.  
 
 ## Contents
 
-1. **Low Resolution Data:** Hourly cadence solar wind (predictions)[INSERT]. Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
+1. **Low Resolution Data:** Hourly cadence solar wind [predictions](INSERT). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
 2. **Code:** [Source code](INSERT) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#model) for vSWIM. Read this if you need to use the model or the dataset.
 
