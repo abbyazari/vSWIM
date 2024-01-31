@@ -64,12 +64,17 @@ This repository contains predictions of the solar wind upstream of Mars from lat
  ### 2. Assessment  
    <details>
    <summary>Test Set</summary>
+   </br>
+
+   A test
 
    </details>
    <details>
    <summary>Performance of Mean Prediction, $\mu$</summary>
    
    </details>
+   
+   <details>
    <summary>Performance of Standard Deviation Prediction, $\sigma$</summary>
    
   </details>
