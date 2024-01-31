@@ -33,15 +33,21 @@ This repository contains predictions of the solar wind upstream of Mars from lat
    - Temperature: $T_{p}$ in [eV]
    - Pressure: $n_{p}$ in [per cc]
    
-   All vector quanties are measured in Mars Solar Orbital (MSO) coordinates.
+   All vector quanties are measured in Mars Solar Orbital (MSO) coordinates. 
    
-   b. Data sources: See [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data).
+   b. Data sources: 
    
-   c. Formulation:
+   The original data used in for this process is from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data.
    
-   d. Data sources:
+   c. Implementation: 
    
-   e. Implementation: 
+   - Split MAVEN dataset into 1000 datapoint subsets
+   - For each subset...
+        - For each feature in the dataset $y_{i}$) where i ranges from {0, ..., 9}, corresponding to each unique solar wind feature
+           - Normalize $y_{i}$ to subset mean and standard deviation
+           - Run regression
+           -    
+   d. Implementation: 
  
   <a id="asssessment"></a>
  ### 2. Assessment 
@@ -51,6 +57,8 @@ This repository contains predictions of the solar wind upstream of Mars from lat
  
   <a id="limits"></a>
  ### 4. Limitations
+
+ WILL PREDICT THE MEAN
  
 The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within [Azari et al., 2024](PENDING).
 
