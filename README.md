@@ -25,7 +25,7 @@ This repository contains predictions of the solar wind upstream of Mars from lat
  ### 1. Model Description
 
    <details open>
-   <summary>a. Overview: 
+   <summary>a. Overview:</summary>
    
    This model uses solar wind data measured from the MAVEN spacecraft since late 2014 and Gaussian process regression to generate continuous predictions (mean, $\mu$ and standard deviation, $\sigma$) of mulitple features of the solar wind including: 
    
@@ -34,12 +34,12 @@ This repository contains predictions of the solar wind upstream of Mars from lat
    - Temperature: $T_{p}$ in [eV]
    - Pressure: $n_{p}$ in [per cc]
    
-   All vector quanties are measured in Mars Solar Orbital (MSO) coordinates. </summary>
-   </details>
+   All vector quanties are measured in Mars Solar Orbital (MSO) coordinates. </details>
    
-   b. Data sources: 
+   <details open>
+   <summary>b. Data sources:</summary>
    
-   The original data used in for this process is from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data.
+   The original data used in for this process is from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data.</details>
    
    c. Implementation
 
