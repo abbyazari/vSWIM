@@ -25,7 +25,7 @@ This repository contains predictions of the solar wind upstream of Mars from lat
  ### 1. Model Description
 
    <details>
-   <summary>Overview:</summary>
+   <summary>Overview</summary>
    
    This model uses solar wind data measured from the MAVEN spacecraft since late 2014 and Gaussian process regression to generate continuous predictions (mean, $\mu$ and standard deviation, $\sigma$) of mulitple features of the solar wind including: 
    
@@ -61,7 +61,19 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 
  
   <a id="asssessment"></a>
- ### 2. Assessment 
+ ### 2. Assessment  
+   <details>
+   <summary>Test Set</summary>
+
+   </details>
+   <details>
+   <summary>Performance of Mean Prediction, $\mu$</summary>
+   
+   </details>
+   <summary>Performance of Standard Deviation Prediction, $\sigma$</summary>
+   
+  </details>
+
  
   <a id="usecases"></a>
  ### 3. Suggested Use Cases
