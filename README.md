@@ -39,14 +39,18 @@ This repository contains predictions of the solar wind upstream of Mars from lat
    
    The original data used in for this process is from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data.
    
-   c. Implementation: 
+   c. Mathematical formulation 
+   
+   d. Sketch of Predictions: 
    
    - Split MAVEN dataset into 1000 datapoint subsets
-   - For each subset...
+   - For each subset
         - For each feature in the dataset $y_{i}$) where i ranges from {0, ..., 9}, corresponding to each unique solar wind feature
-           - Normalize $y_{i}$ to subset mean and standard deviation
-           - Run regression
-           -    
+           - Normalize inputs 
+           - Run Gaussian process regression
+           - Return predictions and unnormalize
+
+   
    d. Implementation: 
  
   <a id="asssessment"></a>
