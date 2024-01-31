@@ -13,6 +13,7 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 ### User Guide
 
 [1. Model Description](#model)
+   [a. Something]
    
 [2. Model Description](#model)
 
