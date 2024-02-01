@@ -78,7 +78,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 #### Example Algorithm
    - Split MAVEN dataset into 1000 datapoint subsets.
    - For each subset; and
-        - For each feature in the dataset $y_{i}$) where i ranges from {0, ..., 9}, corresponding to each solar wind feature
+        - For each feature in the dataset with $y_{i}$) where i ranges from {0, 1, ..., 9}, corresponding to each solar wind feature
            - Normalize inputs
            - Initialize kernel hyperparameters
            - Run Gaussian process regression
