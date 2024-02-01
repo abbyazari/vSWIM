@@ -126,5 +126,5 @@ The following describes the suggested uses and limitations of the vSWIM model. I
  - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself.
  - Vector quantiies are not guranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
  - When this proxy is at 'its worst' (a long time since a recent measurement) the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers.
- - Performance estimates are based on cumulative distributions (e.g. all data within 2 days, all data within 10 days, which includes data within 2 days). Performance for estimates between 8 and 10 days from  recent sample is not the same as the estimate reported for all day within 10 days. 
+ - Performance estimates are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days. 
 
