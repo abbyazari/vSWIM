@@ -122,7 +122,7 @@ def getMAVENData(saveMAVENData = False):
     return(maven)
     
 
-def runvSWIM(getOrb = 'True', saveMAVENData = False,
+def runvSWIM(getOrb = 'False', saveMAVENData = False,
              startDate = dt.datetime(2014, 11, 12, 12), 
              stopDate  = dt.datetime(2016, 1,  1),
              cadence = 60*60, params = ['b_x_SW',     'b_y_SW',    'b_z_SW',   'b_mag_SW',
@@ -211,7 +211,7 @@ def runvSWIM(getOrb = 'True', saveMAVENData = False,
     for i, o in enumerate(np.arange(indexStart, indexStop, 1)):
         
         
-        if ((i % 10) == 0):
+        if ((i % 5) == 0):
         
             print('\nOn {} / {} segments'.format(i, int(indexStop - indexStart)))
         
@@ -299,7 +299,7 @@ def runvSWIM(getOrb = 'True', saveMAVENData = False,
             
             results.loc[indResults, 'sigma_{}'.format(p)] = std_model_unnorm
             
-        if saveModelResults:
-            results.to_csv('../Data/results.csv')
+    if saveModelResults:
+        results.to_csv('../Data/results.csv')
     
     return(maven, results)
