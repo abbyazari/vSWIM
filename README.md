@@ -6,7 +6,7 @@ This repository contains predictions of the solar wind upstream of Mars from lat
 
 ## Contents
 
-1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
+1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars. *beta note: only until the start of 2015 has been generated*
 2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/Code) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars. For a quick start see this Jupyter [notebook](https://github.com/abbyazari/vSWIM/blob/main/Code/vSWIM_Example.ipynb).
 3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
 
