@@ -94,7 +94,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
 
 <a id="asssessment"></a>
-### 2. Assessment 
+### 3. Assessment 
  
 #### Test Set
 
@@ -124,13 +124,13 @@ This model requires the use of GPFlow which has dependencies on TensorFlow and T
 
  
   <a id="usecases"></a>
- ### 3. Suggested Use Cases
+ ### 4. Suggested Use Cases
 
  - The most appropriate use case of this proxy is for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
  - Due to the nature of this prediction, $\sigma$ predictions should always be used with $\mu$ predictions. 
    
   <a id="limits"></a>
- ### 4. Limitations
+ ### 5. Limitations
  
  - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself.
  - Vector quantiies are not guranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
