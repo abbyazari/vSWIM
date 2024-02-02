@@ -20,7 +20,7 @@ If you use this product please reference the submitted [JGR Machine Learning pap
 author = {Azari A. R. and Abrahams, E. and Sapienza, and F. and Halekas, J. and Biersteker, J. and 
 Mitchell, D. L. and Pérez, F. and Marquette, M. and Rutala, M. J. and Bowers, C. F. and 
 Jackman, C. M. and Curry, S. M.},
-doi = {arXiv: ?},
+doi = {arXiv: pending},
 journal = {Submitted to Journal of Geophysical Research: Machine Learning and Computation},
 title = {A Virtual Solar Wind Monitor for {M}ars with Uncertainty Quantification using {G}aussian Processes},
 year = {2024}
