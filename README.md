@@ -1,29 +1,29 @@
 # vSWIM<sup>*beta*</sup> - A Virtual Solar Wind Monitor for Mars 
 
-### *IMPORTANT: This repository is currently in beta. It has been released for the peer review process.* 
+### *IMPORTANT: This repository is currently in beta; certain user checks have not been implemented. It has been released for the peer review process.* 
 
 This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model. Largely this model is useful for statistical studies where a continuous estimation with uncertainties is needed at Mars.
 
 ## Contents
 
-1. **Low Resolution Data:** Hourly cadence solar wind [predictions](INSERT). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
-2. **Code:** [Source code](INSERT) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
-3. **Usage Guidelines:** A short [user guide](#model) for vSWIM. Read this if you need to use the model or the dataset.
+1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product at Mars.
+2. **Model:** [Source code]((https://github.com/abbyazari/vSWIM/edit/main/Code) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
+3. **Usage Guidelines:** A short [user guide](#model) for vSWIM. Read this if you need to use either 1 or 2.
 
 <a id="citation"></a>
 ## Citing vSWIM
 
-If you use this product please reference the submitted [JGR Machine Learning paper](PENDING). Sample Bibtex is given below:
+If you use this product please reference the submitted [JGR Machine Learning paper](PENDING-arxivlink). Sample Bibtex is given below:
 
 ```
 @article{Azari2024,
 author = {Azari A. R. and Abrahams, E. and Sapienza, and F. and Halekas, J. and Biersteker, J. and 
 Mitchell, D. L. and P ́erez, F. and Marquette, M. and Rutala, M. J. and Bowers, C. F. and 
 Jackman, C. M. and Curry, S. M.},
-doi = {TBD},
-journal = {Journal of Geophysical Research: Machine Learning and Computation},
+doi = {arXiv: ?},
+journal = {Submitted to Journal of Geophysical Research: Machine Learning and Computation},
 title = {A Virtual Solar Wind Monitor for {M}ars with Uncertainty Quantification using {G}aussian Processes},
-year = {2024, submitted}
+year = {2024}
 }
 ```
 
