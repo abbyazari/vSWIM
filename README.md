@@ -37,12 +37,14 @@ year = {2024}
 The following describes the suggested uses and limitations of the vSWIM model. It follows a rough standard AI model reporting in model card format (see [Mitchell et al., 2015](https://dl.acm.org/doi/10.1145/3287560.3287596)). A more extensive overview can be found within the associated [publication](#citation)).
 
 [1. Model Description](#model)
+
+[2. Requirements](#reqs)
    
-[2. Assessment](#assessment)
+[3. Assessment](#assessment)
 
-[3. Suggested Use Cases](#usecases)
+[4. Suggested Use Cases](#usecases)
 
-[4. Limitations](#limits)
+[5. Limitations](#limits)
  
 
 
@@ -85,7 +87,12 @@ The following describes the suggested uses and limitations of the vSWIM model. I
            - Initialize kernel hyperparameters
            - Run Gaussian process regression
            - Return predictions and unnormalize
- 
+
+<a id="reqs"></a>
+### 2. Requirements
+
+This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
+
 <a id="asssessment"></a>
 ### 2. Assessment 
  
