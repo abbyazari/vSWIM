@@ -193,11 +193,11 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
         maven = getMAVENData(saveMAVENData)
         
         #check if user picked a valid date of MAVEN
-        if ((startDate < maven.loc[0, 'date_SW']) | 
-            (stopDate > maven.loc[len(maven) - 1, 'date_SW'])):
+        if ((startDate < pd.to_datetime(maven[::subsetSize].date_SW.values[0])) | 
+            (stopDate  > pd.to_datetime(maven[::subsetSize].date_SW.values[-2]))):
             print('Can only run from {} to {}, pick new time range.'.format(
-                                                            maven.loc[0, 'date_SW'],
-                                                            maven.loc[len(maven) - 1, 'date_SW']))
+                                            pd.to_datetime(maven[::subsetSize].date_SW.values[0]),
+                                            pd.to_datetime(maven[::subsetSize].date_SW.values[-2])))
             userInputCorrect = False
     
     if userInputCorrect:
