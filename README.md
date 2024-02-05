@@ -131,9 +131,10 @@ This model requires the use of GPFlow which has dependencies on TensorFlow and T
  - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframes by pd.read_csv
 
 ```
- Reading the hourly predictions into a Pandas dataframe: 
+ Read the hourly predictions into a Pandas dataframe: 
  
  data = pd.read_csv('https://raw.githubusercontent.com/abbyazari/vSWIM/main/Data/YYYY-YYYY_Hourly.csv', index_col=['Unnamed: 0'])
+
 ```  
 
   <a id="limits"></a>
