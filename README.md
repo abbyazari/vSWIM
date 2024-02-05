@@ -93,6 +93,8 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
 
+Note, you only need these installations if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data) do not require this installation.  
+
 <a id="asssessment"></a>
 ### 3. Assessment 
  
