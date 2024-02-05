@@ -128,8 +128,14 @@ This model requires the use of GPFlow which has dependencies on TensorFlow and T
 
  - The most appropriate use case of this proxy is for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
  - Due to the nature of this prediction, $\sigma$ predictions should always be used with $\mu$ predictions.
- - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframes via file = pd.read_csv('https://raw.githubusercontent.com/abbyazari/vSWIM/main/Data/YYYY-YYYY_Hourly.csv', index_col=['Unnamed: 0'])
-   
+ - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframes by pd.read_csv
+
+ '''
+ Example: 
+ 
+ data = pd.read_csv('https://raw.githubusercontent.com/abbyazari/vSWIM/main/Data/YYYY-YYYY_Hourly.csv', index_col=['Unnamed: 0'])
+ '''   
+
   <a id="limits"></a>
  ### 5. Limitations
  
