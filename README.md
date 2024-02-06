@@ -147,6 +147,6 @@ Note, you only need these installations if you plan on using the full model. The
  - Vector quantiies are not guranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
  - When this proxy is at 'its worst' (a long time since a recent measurement) the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers. This can be filtered via restricting to a reasonable time to a recent measurement.
  - Performance estimates are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days.
- - We do not reccomend downsampling (interpolating) hourly predictions to a lower time cadence, instead we direct users to running the model directly at the time cadence they desire.
+ - We do not reccomend upsampling (interpolating) hourly predictions to a lower time cadence, instead we direct users to running the model directly at the time cadence they desire.
  - Downsampling to lower time resolutions (i.e. 10 hour predictions from the 1 hour files) however, is a reasonable use of this model. 
 
