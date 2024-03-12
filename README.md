@@ -17,7 +17,7 @@ If you use this product please reference the submitted [JGR Machine Learning pap
 
 ```
 @article{Azari2024,
-author = {Azari, A. R. and Abrahams, E. and Sapienza, and F. and Halekas, J. and Biersteker, J. and 
+author = {Azari, A. R. and Abrahams, E. and Sapienza, F. and Halekas, J. and Biersteker, J. and 
 Mitchell, D. L. and Pérez, F. and Marquette, M. and Rutala, M. J. and Bowers, C. F. and 
 Jackman, C. M. and Curry, S. M.},
 eprint={2402.01932},
