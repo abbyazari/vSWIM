@@ -72,7 +72,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 - y (solar wind feature) outputs are normalized to their mean and standard deviation of the subset, x (time) is normalized between 0 and 100. 
 
 - We use a zero mean function and a [RationalQuadratic](https://gpflow.github.io/GPflow/develop/api/gpflow/kernels/index.html) covariance function kernel with:
-    - l initialized to 0.1 of the non zero gaps betwen the dataset and ranging from the minimum to the median of the non zero gaps
+    - l initialized to 0.1 of the non zero gaps betwen the dataset and ranging from the minimum to the median of the non zero gaps,
     - the variance intitially set to 3.
 
 - A fuller discussion of implementation Gaussian processes can be found within the [publication](#citation).
