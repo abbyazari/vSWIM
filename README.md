@@ -22,7 +22,7 @@ Mitchell, D. L. and Pérez, F. and Marquette, M. and Rutala, M. J. and Bowers, C
 Jackman, C. M. and Curry, S. M.},
 eprint={2402.01932},
 journal = {Submitted to the Journal of Geophysical Research: Machine Learning and Computation},
-title = {A Virtual Solar Wind Monitor for {M}ars with Uncertainty Quantification using {G}aussian Processes},
+title = {A Virtual Solar Wind Monitor at {M}ars with Uncertainty Quantification using {G}aussian Processes},
 year = {2024},
 url  = {https://arxiv.org/abs/2402.01932}
 }
