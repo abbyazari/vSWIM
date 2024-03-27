@@ -4,7 +4,7 @@
 
 This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model. This model is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other current, and future missions to Mars.
 
-We highly recommend that users review the brief usage guidelines below before using either the model or the associated predicitons. 
+We highly recommend that users review the brief usage guidelines below before using either the model or the associated predictions. 
 
 ## Contents
 
