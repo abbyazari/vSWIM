@@ -129,9 +129,10 @@ Note, you only need these installations if you plan on using the full model. The
   <a id="usecases"></a>
  ### 4. Suggested Use Cases and Tips
 
- - The most appropriate use case of this proxy is for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
+ - The most appropriate use cases of this proxy are for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
  - Due to the nature of this prediction, $\sigma$ predictions should always be used with $\mu$ predictions.
  - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframe without downloading the original file to your local machine with pd.read_csv.
+- If you are using this proxy for an event study (i.e. not a multi-year study) please read the limitations section below.
 
 ```
  #Read the hourly predictions into a Pandas dataframe: 
@@ -145,10 +146,10 @@ Note, you only need these installations if you plan on using the full model. The
   <a id="limits"></a>
  ### 5. Limitations
  
- - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself.
- - Vector quantiies are not guranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
+ - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself. 
+ - Vector quantiies are not guaranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
  - When this proxy is at 'its worst' (a long time since a recent measurement) the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers. This can be filtered via restricting to a reasonable time to a recent measurement.
- - Performance estimates are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days.
+ - Performance estimates in the associated paper are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days. As a result, we do not recommend this proxy is used for event studies that are limited to only data (e.g. only 2-4 days, only 8-10 days etc) that is far from a recent measurement. 
  - We do not reccomend upsampling (interpolating) hourly predictions to a lower time cadence, instead we direct users to running the model directly at the time cadence they desire.
- - Downsampling to lower time resolutions (i.e. 10 hour predictions from the 1 hour files) however, is a reasonable use of this model. 
+ - Downsampling to lower time resolutions (i.e. 10 hour predictions from the 1 hour files) is a reasonable use of this model. 
 
