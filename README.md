@@ -71,8 +71,11 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 ```
 @article{Halekas2017,
-author = {Halekas, J. S. and Ruhunusiri, S. and Harada, Y. and Collinson, G. and Mitchell, D. L. and Mazelle, C. and McFadden, J. P. and Connerney, J. E. P. and Espley, J. R. and Eparvier, F. and Luhmann, J. G. and Jakosky, B. M.},
-title = {Structure, dynamics, and seasonal variability of the {M}ars-solar wind interaction: {MAVEN Solar Wind Ion Analyzer} in-flight performance and science results},
+author = {Halekas, J. S. and Ruhunusiri, S. and Harada, Y. and Collinson, G. and Mitchell, D. L. and
+Mazelle, C. and McFadden, J. P. and Connerney, J. E. P. and Espley, J. R. and Eparvier, F. and
+Luhmann, J. G. and Jakosky, B. M.},
+title = {Structure, dynamics, and seasonal variability of the {M}ars-solar wind interaction:
+{MAVEN Solar Wind Ion Analyzer} in-flight performance and science results},
 journal = {Journal of Geophysical Research: Space Physics},
 volume = {122},
 number = {1},
@@ -85,7 +88,8 @@ year = {2017}
 - For the MAVEN SWIA instrument:
 ```
 @article{Halekas2015,
-author = {Halekas, J. S. and Taylor, E. R. and Dalton, G. and Johnson, G. and Curtis, D. W. and McFadden, J. P. and Mitchell, D. L. and Lin, R. P. and Jakosky, B. M.},
+author = {Halekas, J. S. and Taylor, E. R. and Dalton, G. and Johnson, G. and Curtis, D. W.
+and McFadden, J. P. and Mitchell, D. L. and Lin, R. P. and Jakosky, B. M.},
 title = {{The Solar Wind Ion Analyzer for MAVEN}},
 journal = {Space Science Reviews},
 volume = {195},
@@ -100,7 +104,8 @@ year = {2015}
 
 ```
 @article{Connerney2015,
-author = {Connerney, J. E. P. and Espley, J. and Lawton, P. and Murphy, S. and Odom, J. and Oliversen, R. and Sheppard, D.},
+author = {Connerney, J. E. P. and Espley, J. and Lawton, P. and Murphy, S. and Odom, J. and
+Oliversen, R. and Sheppard, D.},
 title = {{The MAVEN Magnetic Field Investigation}},
 journal = {Space Science Reviews},
 volume = {195},
