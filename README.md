@@ -2,7 +2,7 @@
 
 ### *IMPORTANT: This repository has been released for and is undergoing the peer review process.* 
 
-This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model. This model is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other missions to Mars.
+This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data with a predictive model. This model output is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other missions to Mars.
 
 We highly recommend that users review the brief usage guidelines below before using either the model or the associated predictions. 
 
@@ -123,7 +123,7 @@ year = {2015}
     - l initialized to 0.1 of the non zero gaps betwen the dataset and ranging from the minimum to the median of the non zero gaps,
     - the variance intitially set to 3.
 
-- A fuller discussion of implementation Gaussian processes can be found within the [publication](#citation).
+- A fuller discussion of Gaussian processes can be found within the [publication](#citation).
 
 
 #### Example Algorithm
@@ -138,7 +138,7 @@ year = {2015}
 <a id="reqs"></a>
 ### 2. Requirements
 
-This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
+This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you likely have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
 
 Note, you only need these installations if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data) do not require this installation.  
 
@@ -147,7 +147,7 @@ Note, you only need these installations if you plan on using the full model. The
  
 #### Test Set
 
-- Poor model performance is a function of distance to a true (spacecraft measured) value. The test set then was designed to have the same distribution of data gaps as a final predicted proxy sampled at an hour cadence. All the following performance estimates are based on this test dataset.
+- Model performance is a function of distance to a true (spacecraft measured) value. The test set then was designed to have the same distribution of data gaps as a final predicted proxy sampled at an hour cadence. All the following performance estimates are based on this test dataset.
    
 #### Performance of Mean Prediction, $\mu$
 
@@ -158,7 +158,7 @@ Note, you only need these installations if you plan on using the full model. The
    - $\ge$ 0.48 within 28 days of a true measurement, this represents using roughly 95% of the dataset.
   
 -  There are minor differences depending on the paramters in question with $V_{y}$ representing the poorest performing parameter.
--  It is worth noting that at large times from a true spacecraft measurement, the model can (and does) produce our initial 'guess' at the parameter value. From our initialization this is the mean value of the true dataset. You can identify when this occurs by reviewing the unnormalized prediction of $\mu$. When the unnormalized prediction of $\mu$ is close to 0, the prediction is the same as the initial subset's mean. 
+-  It is worth noting that at large times from a true spacecraft measurement, the model can (and does) produce our initial 'guess' at the parameter value. From our initialization this is the mean value of a subsset of the true dataset. You can identify when this occurs by reviewing the unnormalized prediction of $\mu$. When the unnormalized prediction of $\mu$ is close to 0, the prediction is the same as the initial subset's mean. 
   
 #### Performance of Standard Deviation Prediction, $\sigma$
 
