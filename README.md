@@ -67,7 +67,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 - The dataset(s) used in the current iteration of this model are from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data. Sample bibtex of relevant data sources is given below.
 
-For the integrated MAVEN dataset:
+- For the integrated MAVEN dataset:
 
 ```
 @article{Halekas2017,
@@ -82,7 +82,7 @@ year = {2017}
 }
 ```
 
-For the MAVEN SWIA instrument:
+- For the MAVEN SWIA instrument:
 ```
 @article{Halekas2015,
 author = {Halekas, J. S. and Taylor, E. R. and Dalton, G. and Johnson, G. and Curtis, D. W. and McFadden, J. P. and Mitchell, D. L. and Lin, R. P. and Jakosky, B. M.},
@@ -96,7 +96,7 @@ year = {2015}
 }
 ```
 
-For the MAVEN MAG instrument:
+- For the MAVEN MAG instrument:
 
 ```
 @article{Connerney2015,
