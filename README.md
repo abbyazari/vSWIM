@@ -2,7 +2,7 @@
 
 ### *IMPORTANT: This repository has been released for and is undergoing the peer review process.* 
 
-This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model. This model is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other current, and future missions to Mars.
+This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated from [MAVEN](https://mars.nasa.gov/maven/) spacecraft data and the associated predictive model. This model is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other missions to Mars.
 
 We highly recommend that users review the brief usage guidelines below before using either the model or the associated predictions. 
 
@@ -15,7 +15,7 @@ We highly recommend that users review the brief usage guidelines below before us
 <a id="citation"></a>
 ## Citing vSWIM
 
-If you use this product please reference the submitted [JGR Machine Learning paper](https://arxiv.org/abs/2402.01932). Sample Bibtex is given below:
+If you use this product please reference the submitted [JGR Machine Learning paper](https://arxiv.org/abs/2402.01932). Sample Bibtex is given below. Please additionally see relevant citations for the current source datasets under the model [description](#model).
 
 ```
 @article{Azari2024,
@@ -65,7 +65,53 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 #### Data sources
 
-- The original data used in for this process is from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data.</details>
+- The dataset used in the current iteration of this model is from a combined SWIA and MAG (MAVEN instruments) data source, see [Halekas+2017](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2016JA023167), [Halekas+2015](https://link.springer.com/article/10.1007/s11214-013-0029-z), [Connerney+2015](https://link.springer.com/article/10.1007/s11214-015-0169-4) and [online](https://homepage.physics.uiowa.edu/~jhalekas/drivers.html) for original data. Sample bibtex of relevant data sources is given below.
+
+For the integrated MAVEN dataset:
+
+```
+@article{Halekas2017,
+author = {Halekas, J. S. and Ruhunusiri, S. and Harada, Y. and Collinson, G. and Mitchell, D. L. and Mazelle, C. and McFadden, J. P. and Connerney, J. E. P. and Espley, J. R. and Eparvier, F. and Luhmann, J. G. and Jakosky, B. M.},
+title = {Structure, dynamics, and seasonal variability of the {M}ars-solar wind interaction: {MAVEN Solar Wind Ion Analyzer} in-flight performance and science results},
+journal = {Journal of Geophysical Research: Space Physics},
+volume = {122},
+number = {1},
+pages = {547-578},
+doi = {10.1002/2016JA023167},
+year = {2017}
+}
+```
+
+For the MAVEN SWIA instrument:
+```
+@article{Halekas2015,
+author = {Halekas, J. S. and Taylor, E. R. and Dalton, G. and Johnson, G. and Curtis, D. W. and McFadden, J. P. and Mitchell, D. L. and Lin, R. P. and Jakosky, B. M.},
+title = {{The Solar Wind Ion Analyzer for MAVEN}},
+journal = {Space Science Reviews},
+volume = {195},
+number = {1},
+pages = {125-151},
+doi = {10.1007/s11214-013-0029-z},
+year = {2015}
+}
+```
+
+For the MAVEN MAG instrument:
+
+```
+@article{Connerney2015,
+author = {Connerney, J. E. P. and Espley, J. and Lawton, P. and Murphy, S. and Odom, J. and Oliversen, R. and Sheppard, D.},
+title = {{The MAVEN Magnetic Field Investigation}},
+journal = {Space Science Reviews},
+volume = {195},
+number = {1},
+pages = {257-291},
+doi = {10.1007/s11214-015-0169-4},
+year = {2015}
+}
+```
+
+
 
 #### Implementation
 
