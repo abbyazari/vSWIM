@@ -30,7 +30,6 @@ url  = {https://arxiv.org/abs/2402.01932}
 }
 ```
 
-
  <!-- headings -->
  <a id="guidelines"></a>
 ## Usage Guidelines
@@ -203,4 +202,13 @@ Note, you only need these installations if you plan on using the full model. The
  - Performance estimates in the associated paper are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days. As a result, we do not recommend this proxy is used for event studies that are limited to only data (e.g. only 2-4 days, only 8-10 days etc) that is far from a recent measurement. 
  - We do not reccomend upsampling (interpolating) hourly predictions to a lower time cadence, instead we direct users to running the model directly at the time cadence they desire.
  - Downsampling to lower time resolutions (i.e. 10 hour predictions from the 1 hour files) is a reasonable use of this model. 
+
+## Funding
+
+This project has been supported by:
+- The MAVEN mission project; via NASA through the Mars Exploration Program and by grant NNH10CC04C to the University of Colorado and subsequent subcontract to Space Sciences
+Laboratory, University of California, Berkeley.
+- NASA’s AI / ML Use Case Program, grant 80NSSC21K1370. 
+- Computation was enabled by the NSF Earth Cube Program under awards 1928406, 1928374. 
+- The lead developer is currently supported by the Data Science Fellowship at the University of British Columbia through the Data Science Institute’s Postdoctoral Matching Fund.
 
