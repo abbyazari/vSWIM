@@ -182,7 +182,7 @@ Note, you only need these installations if you plan on using the full model. The
  - The most appropriate use cases of this proxy are for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
  - Due to the nature of this prediction, $\sigma$ predictions should always be used with $\mu$ predictions.
  - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframe without downloading the original file to your local machine with pd.read_csv.
-- If you are using this proxy for an event study (i.e. not a multi-year study) please read the limitations section below and consider using the original mission datasets instead.
+- If you are using this proxy for an event study (i.e. not a multi-year study) please read the limitations section below and consider using the original mission [datasets](#model) instead of this product.
 
 ```
  #Read the hourly predictions into a Pandas dataframe: 
@@ -196,7 +196,7 @@ Note, you only need these installations if you plan on using the full model. The
   <a id="limits"></a>
  ### 5. Limitations
  
- - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself. If interested in the directly measured solar wind with no continuous estimation as provided by this model, please isntead refer to the original mission [datasets](#model).
+ - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself. If interested in the directly measured solar wind with no continuous estimation as provided by this model, please use the the uninterpolated mission [datasets](#model).
  - Vector quantiies are not guaranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
  - When this proxy is at 'its worst' (a long time since a recent measurement) the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers. This can be filtered via restricting to a reasonable time to a recent measurement.
  - Performance estimates in the associated paper are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days. As a result, we do not recommend this proxy is used for event studies that are limited to only data (e.g. only 2-4 days, only 8-10 days etc) that is far from a recent measurement. 
