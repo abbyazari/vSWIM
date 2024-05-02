@@ -16,7 +16,7 @@
   - Temperature: $T_{p}$ in [eV]
   - Pressure: $n_{p}$ in [per cc]
     
-- These parameters are provided with a mean value and a standard deviation for both the true and the normalized values. The normalized values are provided as optional additional information to assess model performance (see [user guide](https://github.com/abbyazari/vSWIM/edit/main/)). The naming convention is as follows: 
+- These parameters are provided with a mean value and a standard deviation for both the true and the normalized values. The normalized values are provided as additional information to assess model performance (see [user guide](https://github.com/abbyazari/vSWIM/edit/main/)). The naming convention is as follows: 
   - mean, mu_paramName
   - standard deviation, sigma_paramName
   - mean normalized, mu_paramName_normed
