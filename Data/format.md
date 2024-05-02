@@ -1,7 +1,7 @@
 
 # Format Information for Hour Resolution Files 
 
-### IMPORTANT: Please refer to [user guidelines](https://github.com/abbyazari/vSWIM/edit/main/) for user information before using these data.
+### IMPORTANT: Please refer to [user guidelines](https://github.com/abbyazari/vSWIM/) before using these data.
 
 ## Directory Structure
 
