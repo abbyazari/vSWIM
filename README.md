@@ -206,8 +206,7 @@ Note, you only need these installations if you plan on using the full model. The
 ## Funding
 
 This project has been supported by:
-- The MAVEN mission project; via NASA through the Mars Exploration Program and by grant NNH10CC04C to the University of Colorado and subsequent subcontract to Space Sciences
-Laboratory, University of California, Berkeley.
+- The MAVEN mission project; via NASA through the Mars Exploration Program and by grant NNH10CC04C to the University of Colorado and subsequent subcontract to Space Sciences Laboratory, University of California, Berkeley.
 - NASA’s AI / ML Use Case Program, grant 80NSSC21K1370. 
 - Computation was enabled by the NSF Earth Cube Program under awards 1928406, 1928374. 
 - The lead developer is currently supported by the Data Science Fellowship at the University of British Columbia through the Data Science Institute’s Postdoctoral Matching Fund.
