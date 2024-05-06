@@ -1,7 +1,5 @@
 # vSWIM<sup>*beta*</sup> - A Virtual Solar Wind Monitor for Mars 
 
-### *IMPORTANT: This repository has been released for and is undergoing the peer review process.* 
-
 [![DOI](https://zenodo.org/badge/706391083.svg)](https://zenodo.org/doi/10.5281/zenodo.11106970)
 
 This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated with a predictive model and [MAVEN](https://mars.nasa.gov/maven/) spacecraft data. This model output is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other missions to Mars.
