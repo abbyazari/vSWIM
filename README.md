@@ -1,4 +1,4 @@
-# vSWIM<sup>*beta*</sup> - A Virtual Solar Wind Monitor for Mars 
+# vSWIM - A Virtual Solar Wind Monitor for Mars 
 
 [![DOI](https://zenodo.org/badge/706391083.svg)](https://zenodo.org/doi/10.5281/zenodo.11106970)
 
