@@ -1,6 +1,9 @@
 #created by A. R. Azari on 2/1/2024
 #see BSD-3 Liscense at https://github.com/abbyazari/vSWIM/blob/main/LICENSE.md
 #see relevant materials at https://github.com/abbyazari/vSWIM/blob/main/Citation.bib 
+#if using the original MAVEN generated data see https://github.com/abbyazari/vSWIM/tree/main
+#for original data citations including but not limited to: 
+#Halekas et al., 2017, Halekas et al., 2015, Connerney et al., 2015
 
 #import required data grabbing and storing packages
 import requests
@@ -84,6 +87,10 @@ def getMAVENData(saveMAVENData = False):
     '''
     Downloads data from Jasper Halekas' merged data product online at:
     https://homepage.physics.uiowa.edu/~jhalekas/drivers/drivers_merge_l2_hires.txt
+
+    See Halekas et al., 2017 for relevant information on the original merged product. 
+
+    See Halekas et al., 2015, Connerney et al. 2015 for original instrument papers.
     
     Defaults to not saving file on local drive. 
     
