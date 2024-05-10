@@ -9,8 +9,9 @@ We highly recommend that users review the brief usage guidelines below before us
 ## Contents
 
 1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product. A human readable data format description is also [provided](https://github.com/abbyazari/vSWIM/blob/main/Data/format.md).
-2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/Code) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars. For a quick start see this Jupyter [notebook](https://github.com/abbyazari/vSWIM/blob/main/Code/vSWIM_Example.ipynb).
+2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/Code) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
+4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/Tutorials) for reading the data or running the model.
 
 <a id="citation"></a>
 ## Citing vSWIM
