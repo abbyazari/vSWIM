@@ -13,6 +13,8 @@ We highly recommend that users review the brief usage guidelines below before us
 3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
 4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/) for reading the data or running the model.
 
+
+
 <a id="citation"></a>
 ## Citing vSWIM
 
@@ -39,7 +41,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
 
 [1. Model Description](#model)
 
-[2. Requirements](#reqs)
+[2. Installation](#install)
    
 [3. Assessment](#assessment)
 
@@ -140,8 +142,8 @@ year = {2015}
            - Run Gaussian process regression
            - Return predictions and unnormalize
 
-<a id="reqs"></a>
-### 2. Requirements
+<a id="install"></a>
+### 2. Installation 
 
 This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you likely have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
 
