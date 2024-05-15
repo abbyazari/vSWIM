@@ -10,6 +10,7 @@ import requests
 import glob
 import os
 import regex                            as     re
+import matplotlib.pyplot                as     plt
 
 #import GPU enabled GP packages
 import tensorflow              as     tf
@@ -342,6 +343,8 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
                 X_model = mmScaler.transform(results.loc[indResults, 'date_[unix]'].values.reshape(-1, 1))
 
                 mean_model, var_model = model.predict_y(X_model)
+                mean_model = np.array(mean_model)
+                var_model = np.array(var_model)
 
                 std_model = np.sqrt(var_model)
 
@@ -349,7 +352,7 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
 
                 results.loc[indResults, 'sigma_{}_normed'.format(p)] = std_model
 
-                mean_model_unnorm = normScaler.inverse_transform(mean_model.numpy().reshape(-1, 1))[:, 0]
+                mean_model_unnorm = normScaler.inverse_transform(mean_model.reshape(-1, 1))[:, 0]
 
                 std_model_unnorm  = std_model*normScaler.scale_
 
@@ -365,6 +368,32 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
     else:
         return(False, False)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
+    maven, results = runvSWIM(cadence = 1, params = ['v_x_SW'], 
+                              startDate = dt.datetime(2015, 1,  1),
+                              stopDate  = dt.datetime(2015, 1,  4))
+    
+    # plot original, Halekas et al., 2017 data (see data sources at https://github.com/abbyazari/vSWIM/tree/main) and model predictions
+    indMaven = ((maven.date_SW >= results['date_[utc]'].values[0]) & 
+                    (maven.date_SW <= results['date_[utc]'].values[-1]))
+    
+    plt.fill_between(results['date_[utc]'], results['mu_v_x_SW']  - results['sigma_v_x_SW'], 
+                                                results['mu_v_x_SW']  + results['sigma_v_x_SW'], 
+                                                    color = 'grey', alpha = 0.5, label = '$\sigma_{pred}$')
+    
+    plt.plot(results['date_[utc]'], results['mu_v_x_SW'], 'k', label = '$\mu_{pred}$')
 
-    maven, results = vSWIM.runvSWIM(cadence = 1, params = ['v_x_SW'], startDate = dt.datetime(2015, 1,  1), stopDate  = dt.datetime(2015, 1,  4))
+    plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, 'v_x_SW'], 
+                        s = 10, c = 'r', label = 'Data')
+    
+    plt.xlabel('V_x [km/s]')
+    plt.ylabel('Time [UTC]')
+    plt.legend()
+
+    # plot histogram of time to recent measurement
+    plt.figure()
+    plt.hist(results.gap)
+    plt.xlabel('Days')
+    plt.ylabel('Count')
+
+    plt.show()
