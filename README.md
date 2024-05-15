@@ -183,7 +183,9 @@ Note, you only need these installations if you plan on using the full model. The
  - The most appropriate use cases of this proxy are for large (multi-year) studies of Mars' space environment, ionosphere, and atmosphere or of general trends throughout the heliosphere.
  - Due to the nature of this prediction, $\sigma$ predictions should always be used with $\mu$ predictions.
  - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframe without downloading the original file to your local machine with pd.read_csv.
-- If you are using this proxy for an event study (i.e. not a multi-year study) please read the limitations section below and consider using the original mission [datasets](#model) instead of this product.
+ - If you are using this proxy for an event study (i.e. not a multi-year study) please read the limitations section below and consider using the original mission [datasets](#model) instead of this product.
+
+ - The following example is provided for reading the hourly datafiles, see [tutorial #1](https://github.com/abbyazari/vSWIM/blob/main/Tutorials/readData.ipynb) for more information:
 
 ```
  #Read the hourly predictions into a Pandas dataframe: 
@@ -192,6 +194,16 @@ Note, you only need these installations if you plan on using the full model. The
                      index_col=['Unnamed: 0'])
 
 ```
+
+ - The following example is provided for running the model directly, see [tutorial #2](https://github.com/abbyazari/vSWIM/blob/main/Tutorials/runModel.ipynb) for more information:
+
+```
+ #Run the model with default key word arguments: 
+ 
+ maven, results  = vSWIM.runvSWIM()
+
+```
+
  - If you are using IDL see helpful function created by K. G. Hanley which converts the output .csv to .sav files at [./Code/IDLTools](https://github.com/abbyazari/vSWIM/tree/main/Code/IDLTools) 
 
   <a id="limits"></a>
