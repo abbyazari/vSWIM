@@ -8,7 +8,7 @@ We highly recommend that users review the brief usage guidelines below before us
 
 ## Contents
 
-1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product. A human readable data format description is also [provided](https://github.com/abbyazari/vSWIM/blob/main/Data/format.md).
+1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product. A human readable data format description is also [provided](https://github.com/abbyazari/vSWIM/blob/main/data/format.md).
 2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/Source) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
 4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/) for reading the data or running the model.
@@ -145,7 +145,7 @@ year = {2015}
 
 This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you likely have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
 
-Note, you only need these installations if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data) do not require this installation.  
+Note, you only need these installations if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/data) do not require this installation.  
 
 <a id="asssessment"></a>
 ### 3. Assessment 
@@ -190,7 +190,7 @@ Note, you only need these installations if you plan on using the full model. The
 ```
  #Read the hourly predictions into a Pandas dataframe: 
  
- data = pd.read_csv('https://raw.githubusercontent.com/abbyazari/vSWIM/main/Data/YYYY-YYYY_Hourly.csv',
+ data = pd.read_csv('https://raw.githubusercontent.com/abbyazari/vSWIM/main/data/YYYY-YYYY_Hourly.csv',
                      index_col=['Unnamed: 0'])
 
 ```
@@ -211,7 +211,7 @@ Note, you only need these installations if you plan on using the full model. The
  
  - This proxy does not capture short scale dynamic events (e.g. CMEs) or outliers unless the proxy itself is being used when MAVEN had solar wind data. Under this exception the proxy will roughly agree with the MAVEN data itself. If interested in the directly measured solar wind with no continuous estimation as provided by this model, please use the the uninterpolated mission [datasets](#model).
  - Vector quantiies are not guaranteed to add in quadrature. Care should be taken when comparing components to magntitude predictions.
- - When this proxy is at 'its worst' (a long time since a recent measurement) the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers. This can be filtered via restricting to a reasonable time to a recent measurement (the 'gap' column). See data [format](https://github.com/abbyazari/vSWIM/blob/main/Data/format.md) information.
+ - When this proxy is at 'its worst' (a long time since a recent measurement) the predicted value will be the mean of the subset of data. For certain parameters this is a poor representation of outliers. This can be filtered via restricting to a reasonable time to a recent measurement (the 'gap' column). See data [format](https://github.com/abbyazari/vSWIM/blob/main/data/format.md) information.
  - Performance estimates in the associated paper are based on cumulative distributions (e.g. all predictions within 2 days, all predictions within 10 days, which includes predictions within 2 days). Performance for estimates between 8 and 10 days from a recent measurement is not the same as the estimate reported for all day within 10 days. As a result, we do not recommend this proxy is used for event studies that are limited to only data (e.g. only 2-4 days, only 8-10 days etc) that is far from a recent measurement. 
  - We do not reccomend upsampling (interpolating) hourly predictions to a lower time cadence, instead we direct users to running the model directly at the time cadence they desire.
  - Downsampling to lower time resolutions (i.e. 10 hour predictions from the 1 hour files) is a reasonable use of this model. 
