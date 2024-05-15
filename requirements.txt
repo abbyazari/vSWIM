@@ -4,3 +4,4 @@ pandas==2.2.2
 tf_keras==2.16.0
 regex==2024.5.10
 scikit-learn==1.4.2
+ipykernel==6.29.4
