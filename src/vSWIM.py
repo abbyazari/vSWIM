@@ -55,7 +55,7 @@ def getOrbitalData():
 
     r = requests.get(baseURL)
 
-    x = re.findall('"(maven_orb_rec_.*\.orb)"', r.text)
+    x = re.findall('"(maven_orb_rec_.*.orb)"', r.text)
 
     x.sort()
 
@@ -106,7 +106,7 @@ def getMAVENData(saveMAVENData = False):
                 'v_x_SW', 'v_y_SW', 'v_z_SW', 'tp_SW', 
                 'b_x_SW', 'b_y_SW', 'b_z_SW']
 
-    maven = pd.read_csv(mav_file, names = colNames, index_col = False, sep = '\s+')
+    maven = pd.read_csv(mav_file, names = colNames, index_col = False, sep = r'\s+')
     
 
     maven['date_SW'] = pd.to_datetime(maven['date'])
@@ -379,9 +379,9 @@ if __name__ == "__main__":
     
     plt.fill_between(results['date_[utc]'], results['mu_v_x_SW']  - results['sigma_v_x_SW'], 
                                                 results['mu_v_x_SW']  + results['sigma_v_x_SW'], 
-                                                    color = 'grey', alpha = 0.5, label = '$\sigma_{pred}$')
+                                                    color = 'grey', alpha = 0.5, label = r'$\sigma_{pred}$')
     
-    plt.plot(results['date_[utc]'], results['mu_v_x_SW'], 'k', label = '$\mu_{pred}$')
+    plt.plot(results['date_[utc]'], results['mu_v_x_SW'], 'k', label = r'$\mu_{pred}$')
 
     plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, 'v_x_SW'], 
                         s = 10, c = 'r', label = 'Data')
