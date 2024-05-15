@@ -145,9 +145,11 @@ year = {2015}
 <a id="install"></a>
 ### 2. Installation 
 
-This model requires the use of GPFlow which has dependencies on TensorFlow and TensorFlow Probability. While most other packages (e.g. pandas, numpy) you likely have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We reccomend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
+Option 1: You can run this model by (1) install Python (v3.12) (2) download this repository, (3) create a virtual environment, (4) run pip install -r requirements.txt, (5) follow tutorials in /src/ or run vSWIM.runvSWIM()
 
-Note, you only need these installations if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/data) do not require this installation.  
+Option 2: Alternatively if you prefer to manage your own Python environment directly the primary package needed is GPFlow which has dependencies on TensorFlow and TensorFlow Probability. while most other packages (e.g. pandas, numpy) you likely have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We recommend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
+
+**Note, you only need these installations if you plan on using the full model.** The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/data) do not require this installation.  
 
 <a id="asssessment"></a>
 ### 3. Assessment 
