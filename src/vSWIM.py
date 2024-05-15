@@ -367,18 +367,20 @@ if __name__ == "__main__":
     indMaven = ((maven.date_SW >= results['date_[utc]'].values[0]) & 
                     (maven.date_SW <= results['date_[utc]'].values[-1]))
     
-    plt.fill_between(results['date_[utc]'], results['mu_v_x_SW']  - results['sigma_v_x_SW'], 
-                                                results['mu_v_x_SW']  + results['sigma_v_x_SW'], 
-                                                    color = 'grey', alpha = 0.5, label = r'$\sigma_{pred}$')
-    
-    plt.plot(results['date_[utc]'], results['mu_v_x_SW'], 'k', label = r'$\mu_{pred}$')
+    for p in args.params_list:
+        plt.figure()
+        plt.fill_between(results['date_[utc]'], results['mu_' + p]  - results['sigma_' + p], 
+                                                    results['mu_' + p]  + results['sigma_' + p], 
+                                                        color = 'grey', alpha = 0.5, label = r'$\sigma_{pred}$')
+        
+        plt.plot(results['date_[utc]'], results['mu_' + p], 'k', label = r'$\mu_{pred}$')
 
-    plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, 'v_x_SW'], 
-                        s = 10, c = 'r', label = 'Data')
-    
-    plt.xlabel('V_x [km/s]')
-    plt.ylabel('Time [UTC]')
-    plt.legend()
+        plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, p], 
+                            s = 10, c = 'r', label = 'Data')
+        
+        plt.xlabel('Time [UTC]')
+        plt.ylabel(p)
+        plt.legend()
 
     # plot histogram of time to recent measurement
     plt.figure()
