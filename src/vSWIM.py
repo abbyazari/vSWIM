@@ -171,7 +171,7 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
         
     #check if user used a real solar wind parameter and correct time range.
     if (startDate >= stopDate):
-        raise ValueError("Can not run on stopDate >= startDate.")
+        raise ValueError("Can not run on stopDate <= startDate.")
     
     for p_i in params:
         if not p_i in fullParams:           
