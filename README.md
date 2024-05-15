@@ -11,7 +11,7 @@ We highly recommend that users review the brief usage guidelines below before us
 1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/Data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product. A human readable data format description is also [provided](https://github.com/abbyazari/vSWIM/blob/main/Data/format.md).
 2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/Source) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
-4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/Tutorials) for reading the data or running the model.
+4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/) for reading the data or running the model.
 
 <a id="citation"></a>
 ## Citing vSWIM
@@ -185,7 +185,7 @@ Note, you only need these installations if you plan on using the full model. The
  - If you are using the hourly prediction, you can read these files *directly* into a Pandas dataframe without downloading the original file to your local machine with pd.read_csv.
  - If you are using this proxy for an event study (i.e. not a multi-year study) please read the limitations section below and consider using the original mission [datasets](#model) instead of this product.
 
- - The following example is provided for reading the hourly datafiles, see [tutorial #1](https://github.com/abbyazari/vSWIM/blob/main/Tutorials/readData.ipynb) for more information:
+ - The following example is provided for reading the hourly datafiles, see [tutorial #1](https://github.com/abbyazari/vSWIM/blob/main/readDataTutorial.ipynb) for more information:
 
 ```
  #Read the hourly predictions into a Pandas dataframe: 
@@ -195,7 +195,7 @@ Note, you only need these installations if you plan on using the full model. The
 
 ```
 
- - The following example is provided for running the model directly, see [tutorial #2](https://github.com/abbyazari/vSWIM/blob/main/Tutorials/runModel.ipynb) for more information:
+ - The following example is provided for running the model directly, see [tutorial #2](https://github.com/abbyazari/vSWIM/blob/main/runModelTutorial.ipynb) for more information:
 
 ```
  #Run the model with default key word arguments: 
