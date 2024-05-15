@@ -371,7 +371,7 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
 if __name__ == "__main__":
     maven, results = runvSWIM(cadence = 1, params = ['v_x_SW'], 
                               startDate = dt.datetime(2015, 1,  1),
-                              stopDate  = dt.datetime(2015, 1,  2))
+                              stopDate  = dt.datetime(2015, 1,  4))
     
     # plot original, Halekas et al., 2017 data (see data sources at https://github.com/abbyazari/vSWIM/tree/main) and model predictions
     indMaven = ((maven.date_SW >= results['date_[utc]'].values[0]) & 
