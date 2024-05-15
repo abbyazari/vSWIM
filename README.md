@@ -9,7 +9,7 @@ We highly recommend that users review the brief usage guidelines below before us
 ## Contents
 
 1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product. A human readable data format description is also [provided](https://github.com/abbyazari/vSWIM/blob/main/data/format.md).
-2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/Source) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
+2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/src) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
 3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
 4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/) for reading the data or running the model.
 
@@ -204,7 +204,7 @@ Note, you only need these installations if you plan on using the full model. The
 
 ```
 
- - If you are using IDL see helpful function created by K. G. Hanley which converts the output .csv to .sav files at [./Source/IDLTools](https://github.com/abbyazari/vSWIM/tree/main/Source/IDLTools) 
+ - If you are using IDL see helpful function created by K. G. Hanley which converts the output .csv to .sav files at [./src/IDLTools](https://github.com/abbyazari/vSWIM/tree/main/src/IDLTools) 
 
   <a id="limits"></a>
  ### 5. Limitations
