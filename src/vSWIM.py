@@ -10,7 +10,6 @@ import requests
 import glob
 import os
 import regex                            as     re
-import matplotlib.pyplot                as     plt
 
 #import GPU enabled GP packages
 import tensorflow              as     tf
@@ -23,7 +22,9 @@ import pandas                  as     pd
 import numpy                   as     np
 import datetime                as     dt
 from   sklearn.preprocessing   import StandardScaler, MinMaxScaler
+import matplotlib.pyplot       as     plt
 
+import argparse
 
 #set random numbers for consistency between this run and 
 #future use
@@ -160,235 +161,226 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
     Note 2: this function can not be run before dt.datetime(2014, 11, 12, 12).
     
     '''
-    
-
-    
-    #set user input flag
-    userInputCorrect = True
-    
     #check user inputs
     if ((type(startDate)  != type(dt.datetime(2015, 1, 1))) | 
              ((type(stopDate) != type(dt.datetime(2015, 1, 1))))):
-        print('Check time range type, use dt.datetime format.')
-        
-        userInputCorrect = False
+        raise TypeError('Check time range type, use dt.datetime format.')
     
     if (type(params) != type(['a', 'b'])):
-        print("Check solar wind entry parameter type, use ['param1', 'param2'] format.")
-            
-        userInputCorrect = False 
+        raise ValueError("Check solar wind entry parameter type, use ['param1', 'param2'] format.")
         
     #check if user used a real solar wind parameter and correct time range.
-    if userInputCorrect:
-        
-        if (startDate >= stopDate):
-            print("Can not run on stopDate >= startDate.")
-            
-            userInputCorrect = False
-        
-        for p_i in params:
-
-            if not p_i in fullParams:
-                
-                print('{} is not within valid solar wind options: {}'.format(p_i, fullParams))
-                
-                userInputCorrect = False
+    if (startDate >= stopDate):
+        raise ValueError("Can not run on stopDate <= startDate.")
+    
+    for p_i in params:
+        if not p_i in fullParams:           
+            raise ValueError('{} is not within valid solar wind options: {}'.format(p_i, fullParams))
                 
     #read in maven if passed checks
-    if userInputCorrect:
-        
-        print("Reading in original MAVEN files.")
-        maven = getMAVENData(saveMAVENData)
-        
-        #check if user picked a valid date of MAVEN
-        if ((startDate < pd.to_datetime(maven[::subsetSize].date_SW.values[0])) | 
-            (stopDate  > pd.to_datetime(maven[::subsetSize].date_SW.values[-2]))):
-            print('Can only run from {} to {}, pick new time range.'.format(
-                                            pd.to_datetime(maven[::subsetSize].date_SW.values[0]),
-                                            pd.to_datetime(maven[::subsetSize].date_SW.values[-2])))
-            userInputCorrect = False
+    print("Reading in original MAVEN files.")
+    maven = getMAVENData(saveMAVENData)
     
-    if userInputCorrect:
-            
-        startSubsets = maven[::subsetSize]
+    #check if user picked a valid date of MAVEN
+    if ((startDate < pd.to_datetime(maven[::subsetSize].date_SW.values[0])) | 
+        (stopDate  > pd.to_datetime(maven[::subsetSize].date_SW.values[-2]))):
+        raise ValueError('Can only run from {} to {}, pick new time range.'.format(
+                                        pd.to_datetime(maven[::subsetSize].date_SW.values[0]),
+                                        pd.to_datetime(maven[::subsetSize].date_SW.values[-2])))
+    
+    startSubsets = maven[::subsetSize]
 
-        indexStart = startSubsets.loc[startSubsets['date_SW'] <= startDate, 'SubsetIndex'].values[-1]
-        indexStop  = startSubsets.loc[startSubsets['date_SW'] >= stopDate,  'SubsetIndex'].values[0]
+    indexStart = startSubsets.loc[startSubsets['date_SW'] <= startDate, 'SubsetIndex'].values[-1]
+    indexStop  = startSubsets.loc[startSubsets['date_SW'] >= stopDate,  'SubsetIndex'].values[0]
 
-        results = pd.DataFrame()
+    results = pd.DataFrame()
 
-        results['date_[utc]']  = pd.to_datetime(np.arange(startDate, stopDate, 
-                                                          dt.timedelta(seconds = cadence)))
+    results['date_[utc]']  = pd.to_datetime(np.arange(startDate, stopDate, 
+                                                        dt.timedelta(seconds = cadence)))
 
-        results['date_[unix]']  = ((results['date_[utc]'] - pd.Timestamp("1970-01-01")) //
-                                   pd.Timedelta('1s'))
-
-
-        results['gap']      = np.nan
-
-        if getOrb: 
-
-            print('Generating MAVEN orbit information.')
-
-            results['orb']          = np.nan
-
-            orbs, apoDates = getOrbitalData()
-
-            orbStart = orbs[(apoDates >= results['date_[utc]'][0])][0] - 1 
-            orbStop  = orbs[(apoDates <  results['date_[utc]'][len(results) - 1])][-1] 
+    results['date_[unix]']  = ((results['date_[utc]'] - pd.Timestamp("1970-01-01")) //
+                                pd.Timedelta('1s'))
 
 
-            for orb in np.arange(orbStart, orbStop + 1):
+    results['gap']      = np.nan
+
+    if getOrb: 
+        print('Generating MAVEN orbit information.')
+
+        results['orb']          = np.nan
+
+        orbs, apoDates = getOrbitalData()
+
+        orbStart = orbs[(apoDates >= results['date_[utc]'][0])][0] - 1 
+        orbStop  = orbs[(apoDates <  results['date_[utc]'][len(results) - 1])][-1] 
 
 
-                index = (orbs == orb)
+        for orb in np.arange(orbStart, orbStop + 1):
 
-                startApo = apoDates[orbs == orb][0] 
-                endApo   = apoDates[orbs == orb + 1][0]
 
-                orbIndex = ((results['date_[utc]'] >= startApo) & (results['date_[utc]'] < endApo))
+            index = (orbs == orb)
 
-                results.loc[orbIndex, 'orb'] = orb
+            startApo = apoDates[orbs == orb][0] 
+            endApo   = apoDates[orbs == orb + 1][0]
 
-        print('Running from {} to {}, in {} segments, and for parameters:'.format(startDate, 
+            orbIndex = ((results['date_[utc]'] >= startApo) & (results['date_[utc]'] < endApo))
+
+            results.loc[orbIndex, 'orb'] = orb
+
+    print('Running from {} to {}, in {} segments, and for parameters:'.format(startDate, 
                                                                               stopDate, 
                                                                               indexStop - indexStart))
 
+    for p in params:
+
+        print('{}'.format(p))
+
+        results['mu_{}'.format(p)]            = np.nan
+
+        results['sigma_{}'.format(p)]         = np.nan
+
+        results['mu_{}_normed'.format(p)]     = np.nan
+
+        results['sigma_{}_normed'.format(p)]  = np.nan
+
+
+    for i, o in enumerate(np.arange(indexStart, indexStop, 1)):
+
+
+        if ((i % 5) == 0):
+
+            print('\nOn {} / {} segments'.format(i, int(indexStop - indexStart)))
+
+        data = maven[maven[maven.SubsetIndex == o].index[0]:maven[maven.SubsetIndex == o + 1].index[1]]
+
+
+        indResults = ((results['date_[utc]'] >= data.date_SW.values[0]) & 
+                        (results['date_[utc]'] < data.date_SW.values[-1]))
+
+
+
+        X_train = data['date_SW_unix'].values.reshape(-1, 1) 
+
+
+        results.loc[indResults, 'gap'] = np.around(np.min(cdist(results.loc[indResults, 
+                                                                'date_[unix]'].values.reshape(-1, 1),
+                                                    data.date_SW_unix.values.reshape(-1, 1)), 1) / (60*60*24),
+                                                    decimals = 3)
+
         for p in params:
 
-            print('{}'.format(p))
+            if verbose:
+                print(p)
 
-            results['mu_{}'.format(p)]            = np.nan
-
-            results['sigma_{}'.format(p)]         = np.nan
-
-            results['mu_{}_normed'.format(p)]     = np.nan
-
-            results['sigma_{}_normed'.format(p)]  = np.nan
+            y_train = data['{}'.format(p)].values.reshape(-1, 1)
 
 
-        for i, o in enumerate(np.arange(indexStart, indexStop, 1)):
+            normScaler = StandardScaler()
+
+            normScaler.fit(y_train)
+
+            mmScaler = MinMaxScaler(feature_range=(0, maxRescale))
+            mmScaler.fit(X_train)
+
+            X_normed_train = mmScaler.transform(X_train)
+            y_normed_train = normScaler.transform(y_train)
+
+            dists        = cdist(X_normed_train, X_normed_train)
+
+            dists_noZeros = dists[dists != 0]
+
+            minLength = np.quantile(dists_noZeros, min_l)
+
+            midLength = np.quantile(dists_noZeros, mid_l)
+
+            maxLength = np.quantile(dists_noZeros, max_l)
 
 
-            if ((i % 5) == 0):
-
-                print('\nOn {} / {} segments'.format(i, int(indexStop - indexStart)))
-
-            data = maven[maven[maven.SubsetIndex == o].index[0]:maven[maven.SubsetIndex == o + 1].index[1]]
+            signal_kernel = gpflow.kernels.RationalQuadratic(variance = init_var)
 
 
-            indResults = ((results['date_[utc]'] >= data.date_SW.values[0]) & 
-                          (results['date_[utc]'] < data.date_SW.values[-1]))
+            signal_kernel.lengthscales = gpflow.Parameter(midLength, 
+                                    transform=tfp.bijectors.SoftClip(
+                                        gpflow.utilities.to_default_float(minLength),
+                                        gpflow.utilities.to_default_float(maxLength)))
 
 
+            model = gpflow.models.GPR((X_normed_train, y_normed_train), kernel=signal_kernel)
 
-            X_train = data['date_SW_unix'].values.reshape(-1, 1) 
+            opt = gpflow.optimizers.Scipy()
 
+            opt.minimize(model.training_loss, model.trainable_variables)
 
-            results.loc[indResults, 'gap'] = np.around(np.min(cdist(results.loc[indResults, 
-                                                                  'date_[unix]'].values.reshape(-1, 1),
-                                                      data.date_SW_unix.values.reshape(-1, 1)), 1) / (60*60*24),
-                                                      decimals = 3)
+            if verbose: 
+                gpflow.utilities.print_summary(model, "notebook")
 
-            for p in params:
-
-                if verbose:
-                    print(p)
-
-                y_train = data['{}'.format(p)].values.reshape(-1, 1)
+            #----------and now save results
 
 
-                normScaler = StandardScaler()
+            X_model = mmScaler.transform(results.loc[indResults, 'date_[unix]'].values.reshape(-1, 1))
 
-                normScaler.fit(y_train)
+            mean_model, var_model = model.predict_y(X_model)
+            mean_model = np.array(mean_model)
+            var_model = np.array(var_model)
 
-                mmScaler = MinMaxScaler(feature_range=(0, maxRescale))
-                mmScaler.fit(X_train)
+            std_model = np.sqrt(var_model)
 
-                X_normed_train = mmScaler.transform(X_train)
-                y_normed_train = normScaler.transform(y_train)
+            results.loc[indResults, 'mu_{}_normed'.format(p)]    = mean_model
 
-                dists        = cdist(X_normed_train, X_normed_train)
+            results.loc[indResults, 'sigma_{}_normed'.format(p)] = std_model
 
-                dists_noZeros = dists[dists != 0]
+            mean_model_unnorm = normScaler.inverse_transform(mean_model.reshape(-1, 1))[:, 0]
 
-                minLength = np.quantile(dists_noZeros, min_l)
+            std_model_unnorm  = std_model*normScaler.scale_
 
-                midLength = np.quantile(dists_noZeros, mid_l)
+            results.loc[indResults, 'mu_{}'.format(p)]    = mean_model_unnorm
 
-                maxLength = np.quantile(dists_noZeros, max_l)
+            results.loc[indResults, 'sigma_{}'.format(p)] = std_model_unnorm
 
+    if saveModelResults:
+        results.to_csv('../Data/results.csv')
 
-                signal_kernel = gpflow.kernels.RationalQuadratic(variance = init_var)
-
-
-                signal_kernel.lengthscales = gpflow.Parameter(midLength, 
-                                        transform=tfp.bijectors.SoftClip(
-                                            gpflow.utilities.to_default_float(minLength),
-                                            gpflow.utilities.to_default_float(maxLength)))
-
-
-                model = gpflow.models.GPR((X_normed_train, y_normed_train), kernel=signal_kernel)
-
-                opt = gpflow.optimizers.Scipy()
-
-                opt.minimize(model.training_loss, model.trainable_variables)
-
-                if verbose: 
-                    gpflow.utilities.print_summary(model, "notebook")
-
-                #----------and now save results
-
-
-                X_model = mmScaler.transform(results.loc[indResults, 'date_[unix]'].values.reshape(-1, 1))
-
-                mean_model, var_model = model.predict_y(X_model)
-                mean_model = np.array(mean_model)
-                var_model = np.array(var_model)
-
-                std_model = np.sqrt(var_model)
-
-                results.loc[indResults, 'mu_{}_normed'.format(p)]    = mean_model
-
-                results.loc[indResults, 'sigma_{}_normed'.format(p)] = std_model
-
-                mean_model_unnorm = normScaler.inverse_transform(mean_model.reshape(-1, 1))[:, 0]
-
-                std_model_unnorm  = std_model*normScaler.scale_
-
-                results.loc[indResults, 'mu_{}'.format(p)]    = mean_model_unnorm
-
-                results.loc[indResults, 'sigma_{}'.format(p)] = std_model_unnorm
-
-        if saveModelResults:
-            results.to_csv('../Data/results.csv')
-    
-        return(maven, results)
-        
-    else:
-        return(False, False)
+    return(maven, results)
 
 if __name__ == "__main__":
-    maven, results = runvSWIM(cadence = 1, params = ['v_x_SW'], 
-                              startDate = dt.datetime(2015, 1,  1),
-                              stopDate  = dt.datetime(2015, 1,  4))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--cadence", type=int, default=1, help="interpolation cadence in seconds")
+    parser.add_argument("--start_date", type=dt.datetime.fromisoformat, default="2015-01-01", help="start date in any ISO format")
+    parser.add_argument("--end_date", type=dt.datetime.fromisoformat, default="2015-01-04", help="start date in any ISO format")
+    parser.add_argument("--params_list", type=str, nargs='+', default = ['v_x_SW'], help="solar wind parameters to interpolate, "+\
+                                                                                         "list any of:  b_x_SW, b_y_SW, b_z_SW, b_mag_SW, "+\
+                                                                                         "v_x_SW, v_y_SW, v_z_SW, v_mag_SW, tp_SW,  np_SW" )
+    parser.add_argument("--save_model_results", action="store_true", help="save model results to csv in the data folder")
+    parser.add_argument("--save_maven_data", action="store_true", help="save a copy of the original maven data in the data folder")
+    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
+    args = parser.parse_args()
+
+    maven, results = runvSWIM(cadence = args.cadence, params = args.params_list, 
+                              startDate = args.start_date,
+                              stopDate  = args.end_date,
+                              saveModelResults = args.save_model_results,
+                              saveMAVENData = args.save_maven_data,
+                              verbose= args.verbose)
+                              
     
     # plot original, Halekas et al., 2017 data (see data sources at https://github.com/abbyazari/vSWIM/tree/main) and model predictions
     indMaven = ((maven.date_SW >= results['date_[utc]'].values[0]) & 
                     (maven.date_SW <= results['date_[utc]'].values[-1]))
     
-    plt.fill_between(results['date_[utc]'], results['mu_v_x_SW']  - results['sigma_v_x_SW'], 
-                                                results['mu_v_x_SW']  + results['sigma_v_x_SW'], 
-                                                    color = 'grey', alpha = 0.5, label = r'$\sigma_{pred}$')
-    
-    plt.plot(results['date_[utc]'], results['mu_v_x_SW'], 'k', label = r'$\mu_{pred}$')
+    for p in args.params_list:
+        plt.figure()
+        plt.fill_between(results['date_[utc]'], results['mu_' + p]  - results['sigma_' + p], 
+                                                    results['mu_' + p]  + results['sigma_' + p], 
+                                                        color = 'grey', alpha = 0.5, label = r'$\sigma_{pred}$')
+        
+        plt.plot(results['date_[utc]'], results['mu_' + p], 'k', label = r'$\mu_{pred}$')
 
-    plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, 'v_x_SW'], 
-                        s = 10, c = 'r', label = 'Data')
-    
-    plt.xlabel('V_x [km/s]')
-    plt.ylabel('Time [UTC]')
-    plt.legend()
+        plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, p], 
+                            s = 10, c = 'r', label = 'Data')
+        
+        plt.xlabel('Time [UTC]')
+        plt.ylabel(p)
+        plt.legend()
 
     # plot histogram of time to recent measurement
     plt.figure()
