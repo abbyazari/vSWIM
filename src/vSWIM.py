@@ -135,8 +135,8 @@ def getMAVENData(saveMAVENData = False):
     
 
 def runvSWIM(getOrb = 'False', saveMAVENData = False,
-             startDate = dt.datetime(2014, 11, 12, 12), 
-             stopDate  = dt.datetime(2015, 1,  1),
+             startDate = dt.datetime(2015, 1,  1), 
+             stopDate  = dt.datetime(2015, 1,  4),
              cadence = 60*60, params = ['b_x_SW',     'b_y_SW',    'b_z_SW',   'b_mag_SW',
                                         'v_x_SW',     'v_y_SW',    'v_z_SW',   'v_mag_SW', 
                                         'tp_SW',      'np_SW'],    
@@ -155,7 +155,7 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
                                                  v_x_SW, v_y_SW, v_z_SW, v_mag_SW, 
                                                  tp_SW,  np_SW
                                                  
-    Note 1: future improvements will have improvement user input checks.
+    Note 1: future improvements will have user input checks.
     
     Note 2: this function can not be run before dt.datetime(2014, 11, 12, 12).
     
