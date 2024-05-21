@@ -146,7 +146,7 @@ year = {2015}
 <a id="install"></a>
 ### 2. Installation 
 
-Option 1: You can run this model by:
+Option 1 (recommended): You can run this model by:
 (1) install Python (v3.12) 
 (2) download this repository 
 (3) create a virtual environment
