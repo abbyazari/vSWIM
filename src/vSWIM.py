@@ -49,7 +49,7 @@ fullParams = ['b_x_SW',     'b_y_SW',    'b_z_SW',   'b_mag_SW',
 def getOrbitalData():
     
     '''
-    Downloads MAVEN orbital ephemeris data from NASA SPICE. Optional if wanting orbit numbers.
+    Downloads MAVEN orbital ephemeris data from NASA SPICE. Optional, will only run if needing orbit numbers.
     '''
 
     baseURL = 'https://naif.jpl.nasa.gov/pub/naif/MAVEN/kernels/spk/'
@@ -119,8 +119,19 @@ def getMAVENData(saveMAVENData = False):
     maven['v_mag_SW'] = np.sqrt(maven.v_x_SW**2.0 + maven.v_y_SW**2.0 + maven.v_z_SW**2.0)
     
     if saveMAVENData:
+
+        locResults = './results/'
+
+        try:
+            os.mkdir(locResults)
         
-        maven.to_csv('../Data/drivers_merge_l2_hires.csv')
+        except:
+          #if directory already exists do nothing  
+          pass
+
+        print("Saving data from https://homepage.physics.uiowa.edu/~jhalekas/drivers.html, see Halekas et al., 2017 to {}.".format(locResults))
+        
+        maven.to_csv('{}halekas2017_drivers_merge_l2_hires.csv'.format(locResults))
 
     #smallest number of subsets, only count full subsets 
     
@@ -135,13 +146,11 @@ def getMAVENData(saveMAVENData = False):
     return(maven)
     
 
-def runvSWIM(getOrb = 'False', saveMAVENData = False,
-             startDate = dt.datetime(2015, 1,  1), 
-             stopDate  = dt.datetime(2015, 1,  4),
-             cadence = 60*60, params = ['b_x_SW',     'b_y_SW',    'b_z_SW',   'b_mag_SW',
-                                        'v_x_SW',     'v_y_SW',    'v_z_SW',   'v_mag_SW', 
-                                        'tp_SW',      'np_SW'],    
-             verbose = False, saveModelResults = False):
+def runvSWIM(startDate = dt.datetime(2015, 1,  1), stopDate  = dt.datetime(2015, 1,  4), cadence = 60*60, 
+             params = ['b_x_SW',     'b_y_SW',    'b_z_SW',   'b_mag_SW',
+                        'v_x_SW',    'v_y_SW',    'v_z_SW',   'v_mag_SW', 
+                        'tp_SW',      'np_SW'],    
+             getOrb = False, saveModelResults = False, saveMAVENData = False, returnOriginal = False, verbose = False):
     
     '''
     Run the vSWIM model over a set period of time at a cadence in seconds. 
@@ -204,7 +213,8 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
 
     results['gap']      = np.nan
 
-    if getOrb: 
+    if getOrb:
+        
         print('Generating MAVEN orbit information.')
 
         results['orb']          = np.nan
@@ -244,12 +254,23 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
         results['sigma_{}_normed'.format(p)]  = np.nan
 
 
-    for i, o in enumerate(np.arange(indexStart, indexStop, 1)):
+    
+    arrEnum  = np.arange(indexStart, indexStop, 1)
+    
+    for i, o in enumerate(arrEnum):
 
 
-        if ((i % 5) == 0):
+        #if short, print everyone
+        if len(arrEnum) < 10:
+            
+            print('\nOn {} / {} segments'.format(i + 1, len(arrEnum)))
 
-            print('\nOn {} / {} segments'.format(i, int(indexStop - indexStart)))
+        #if long, print every 5
+        else:
+            
+            if ((i % 5) == 0):
+
+                print('\nOn {} / {} segments'.format(i + 1, len(arrEnum)))
 
         data = maven[maven[maven.SubsetIndex == o].index[0]:maven[maven.SubsetIndex == o + 1].index[1]]
 
@@ -338,54 +359,47 @@ def runvSWIM(getOrb = 'False', saveMAVENData = False,
             results.loc[indResults, 'sigma_{}'.format(p)] = std_model_unnorm
 
     if saveModelResults:
-        results.to_csv('../Data/results.csv')
 
-    return(maven, results)
+        #make directory
+
+        locResults = './results/'
+
+        try:
+            os.mkdir(locResults)
+        
+        except:
+          #if directory already exists do nothing  
+          pass
+          
+
+        print('\nSaving model outputs to {}'.format(locResults))
+        
+        results.to_csv('{}vSWIM_{:%Y-%m-%d:%H-%M-%S}_{:%Y-%m-%d:%H-%M-%S}.csv'.format(locResults, startDate, stopDate))
+
+    if returnOriginal: 
+        
+        return(maven, results)
+
+    else:
+        return(results)
 
 if __name__ == "__main__":
+    
+        
+    #add command line functionality
     parser = argparse.ArgumentParser()
-    parser.add_argument("--cadence", type=int, default=1, help="interpolation cadence in seconds")
+    
     parser.add_argument("--start_date", type=dt.datetime.fromisoformat, default="2015-01-01", help="start date in any ISO format")
     parser.add_argument("--end_date", type=dt.datetime.fromisoformat, default="2015-01-04", help="start date in any ISO format")
+    parser.add_argument("--cadence", type=int, default=1, help="interpolation cadence in seconds")
     parser.add_argument("--params_list", type=str, nargs='+', default = ['v_x_SW'], help="solar wind parameters to interpolate, "+\
                                                                                          "list any of:  b_x_SW, b_y_SW, b_z_SW, b_mag_SW, "+\
                                                                                          "v_x_SW, v_y_SW, v_z_SW, v_mag_SW, tp_SW,  np_SW" )
-    parser.add_argument("--save_model_results", action="store_true", help="save model results to csv in the data folder")
-    parser.add_argument("--save_maven_data", action="store_true", help="save a copy of the original maven data in the data folder")
-    parser.add_argument("--verbose", action="store_true", help="increase output verbosity")
+
+    parser.add_argument("--get_orb", action="store_false", help="include orbital information")
+    parser.add_argument("--save_model_results", action="store_false", help="save model results to csv in the data folder")
+    parser.add_argument("--save_maven_data", action="store_false", help="save a copy of the original MAVEN data in the data folder")
+    parser.add_argument("--return_original", action="store_false", help="returns a copy of the original MAVEN data to user")
+    parser.add_argument("--verbose", action="store_false", help="increase output verbosity")
+    
     args = parser.parse_args()
-
-    maven, results = runvSWIM(cadence = args.cadence, params = args.params_list, 
-                              startDate = args.start_date,
-                              stopDate  = args.end_date,
-                              saveModelResults = args.save_model_results,
-                              saveMAVENData = args.save_maven_data,
-                              verbose= args.verbose)
-                              
-    
-    # plot original, Halekas et al., 2017 data (see data sources at https://github.com/abbyazari/vSWIM/tree/main) and model predictions
-    indMaven = ((maven.date_SW >= results['date_[utc]'].values[0]) & 
-                    (maven.date_SW <= results['date_[utc]'].values[-1]))
-    
-    for p in args.params_list:
-        plt.figure()
-        plt.fill_between(results['date_[utc]'], results['mu_' + p]  - results['sigma_' + p], 
-                                                    results['mu_' + p]  + results['sigma_' + p], 
-                                                        color = 'grey', alpha = 0.5, label = r'$\sigma_{pred}$')
-        
-        plt.plot(results['date_[utc]'], results['mu_' + p], 'k', label = r'$\mu_{pred}$')
-
-        plt.scatter(maven.loc[indMaven, 'date_SW'], maven.loc[indMaven, p], 
-                            s = 10, c = 'r', label = 'Data')
-        
-        plt.xlabel('Time [UTC]')
-        plt.ylabel(p)
-        plt.legend()
-
-    # plot histogram of time to recent measurement
-    plt.figure()
-    plt.hist(results.gap)
-    plt.xlabel('Days')
-    plt.ylabel('Count')
-
-    plt.show()
