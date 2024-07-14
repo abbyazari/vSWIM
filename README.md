@@ -18,19 +18,18 @@ We highly recommend that users review the brief usage guidelines below before us
 <a id="citation"></a>
 ## Citing vSWIM
 
-If you use this product please reference the submitted [JGR Machine Learning paper](https://arxiv.org/abs/2402.01932). Sample Bibtex is given below. Please additionally see relevant citations for the current source datasets under the model [description](#model).
+If you use this product please reference the published [JGR Machine Learning paper](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2024JH000155) and specify the relevant version (e.g. v0.0.0, v0.0.1) used. Sample Bibtex is given below. Please additionally see relevant citations for the current source datasets under the model [description](#model).
 
 ```
 @article{Azari2024,
 author = {Azari, A. R. and Abrahams, E. and Sapienza, F. and Halekas, J. and Biersteker, J. and 
 Mitchell, D. L. and Pérez, F. and Marquette, M. and Rutala, M. J. and Bowers, C. F. and 
 Jackman, C. M. and Curry, S. M.},
-eprint={2402.01932},
-journal = {Accepted to the Journal of Geophysical Research: Machine Learning and Computation},
+journal = {Journal of Geophysical Research: Machine Learning and Computation},
 title = {A Virtual Solar Wind Monitor at {M}ars with Uncertainty Quantification using
 {G}aussian Processes},
 year = {2024},
-url  = {https://arxiv.org/abs/2402.01932}
+doi  = {10.1029/2024JH000155}
 }
 ```
 
