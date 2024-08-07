@@ -172,8 +172,8 @@ Option 3 (for expert users who manage their own Python environment):
 - (1) Install GPFlow (dependencies on TensorFlow and TensorFlow Probability), see [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation)
 - (2) Run notebook from Option 1 or run directly in Python (from src import vSWIM, predictions = vSWIM.runvSWIM())
 
-Note, you only need these if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/data) do not require this installation.
-For using the hourly predictions see [![Tutorial 1: Read Data](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/blob/main/examples/1_readData.ipynb).   
+Note, you only need these if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/tree/main/data) do not require this installation.
+For using the hourly predictions see [![Tutorial 1: Read Data](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/vSWIM/blob/main/examples/1_readData.ipynb).   
 
 <a id="asssessment"></a>
 ### 3. Assessment 
