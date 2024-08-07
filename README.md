@@ -1,7 +1,6 @@
 # vSWIM - A Virtual Solar Wind Monitor for Mars 
 
-[![DOI](https://zenodo.org/badge/706391083.svg)](https://zenodo.org/doi/10.5281/zenodo.11106970)
-
+[![DOI](https://zenodo.org/badge/706391083.svg)](https://zenodo.org/doi/10.5281/zenodo.11106970)[![Tutorial 1: Read Data](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/blob/master/examples/1_readData.ipynb)[![Tutorial 2: Run Model](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/blob/master/examples/2_runModel.ipynb)
 This repository contains predictions of the solar wind upstream of Mars from late 2014 onwards as calculated with a predictive model and [MAVEN](https://mars.nasa.gov/maven/) spacecraft data. This model output is useful for statistical studies where a continuous estimation of the solar wind at Mars with uncertainties is needed. Future iterations are expected that include solar wind observations from other missions to Mars.
 
 We highly recommend that users review the brief usage guidelines below before using either the model or the associated predictions. 
@@ -9,9 +8,9 @@ We highly recommend that users review the brief usage guidelines below before us
 ## Contents
 
 1. **Low Resolution Data:** Hourly cadence solar wind [predictions](https://github.com/abbyazari/vSWIM/edit/main/data). Use this if you need an [OMNI-like](https://omniweb.gsfc.nasa.gov/form/dx1.html) product. A human readable data format description is also [provided](https://github.com/abbyazari/vSWIM/blob/main/data/format.md).
-2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/src) needed to generate predictions. Use this if you need sub hour predictions of the solar wind at Mars.
-3. **Usage Guidelines:** A short [user guide](#guidelines) for vSWIM. Read this if you need to use either 1 or 2.
-4. **Tutorials:** Short [tutorials](https://github.com/abbyazari/vSWIM/tree/main/) for reading the data or running the model.
+2. **Model:** [Source code](https://github.com/abbyazari/vSWIM/edit/main/src) needed to generate predictions. Only needed for fast cadence (under 1 hour) predictions.
+3. **Usage Guidelines:** A [user guide](#guidelines) for vSWIM.
+4. **Tutorials:** Brief [tutorials](https://github.com/abbyazari/vSWIM/tree/main/examples) for reading the data or running the model.
 
 
 
@@ -145,16 +144,26 @@ year = {2015}
 <a id="install"></a>
 ### 2. Installation 
 
-Option 1 (recommended): You can run this model by:
+Option 1 (recommended, quick start via Google collab):
+
+- (1) Follow [![Tutorial 2: Run Model](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/blob/master/examples/2_runModel.ipynb)
+
+Option 2 (recommended, for local machines): 
+
 - (1) install Python (v3.12) 
 - (2) download this repository 
 - (3) create a virtual environment
 - (4) run pip install -r requirements.txt (or use conda)
-- (5) check installation by following tutorials or run via Python (from src import vSWIM, predictions = vSWIM.runvSWIM())
+- (5) check installation by following [![Tutorial 2: Run Model](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/blob/master/examples/2_runModel.ipynb) or run via Python (from src import vSWIM, predictions = vSWIM.runvSWIM())
 
-Option 2: Alternatively if you prefer to manage your own Python environment directly the primary package needed is GPFlow which has dependencies on TensorFlow and TensorFlow Probability. while most other packages (e.g. pandas, numpy) you likely have in your current Python set up, you will need to install TensorFlow, TensorFlow Probability, and GPFlow. We recommend you use the GPFlow installation [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation).
 
-Note, you only need these installations if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/data) do not require this installation.  
+Option 3 (for expert users who manage their own Python environment): 
+
+- (1) Install GPFlow (dependencies on TensorFlow and TensorFlow Probability), see [guide](https://github.com/GPflow/GPflow?tab=readme-ov-file#installation)
+- (2) Proceed to Option 1, step 5
+
+Note, you only need these if you plan on using the full model. The hourly [predictions](https://github.com/abbyazari/vSWIM/edit/main/data) do not require this installation.
+For using the hourly predictions see [![Tutorial 1: Read Data](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/abbyazari/blob/master/examples/1_readData.ipynb).   
 
 <a id="asssessment"></a>
 ### 3. Assessment 
