@@ -70,7 +70,7 @@ The following describes the suggested uses and limitations of the vSWIM model. I
    - IMF: $B_{x}$, $B_{y}$, $B_{z}$, and $|B|$ in [nT]
    - Velocity: $V_{x}$, $V_{y}$, $V_{z}$, and $|V|$ in [km/s]
    - Temperature: $T_{p}$ in [eV]
-   - Pressure: $n_{p}$ in [per cc]
+   - Density: $n_{p}$ in [per cc]
 
 - All vector quanties are measured in Mars Solar Orbital (MSO) coordinates.
 
